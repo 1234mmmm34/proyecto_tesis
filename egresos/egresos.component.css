@@ -1,0 +1,135 @@
+body{
+  background-color: #EDFBE6;
+}
+
+.contenedor {
+  width: 30%;
+  margin: auto;
+  height: 75%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  position:absolute; top:23px; left:20px;
+  margin-left: 5%;
+}
+
+
+.titulo {
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+ 
+}
+
+.Formulario{
+  display: flex;
+  flex-direction: column;
+ 
+}
+
+.boton-verde, .boton-amarillo, .boton-rojo, .boton-azul{
+  padding: 10px;
+  margin: 10px 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  
+ 
+}
+
+/*
+label {
+  margin-top: 10px;
+}
+
+input {
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+.boton-verde, .boton-amarillo, .boton-rojo, .boton-azul{
+  padding: 10px;
+  margin: 10px 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+*/
+.boton-verde {
+  background-color: #4CAF50; /* Verde */
+
+  
+  color: white;
+}
+
+.boton-azul {
+  background-color: blue; /* Azul */
+  color: white;
+}
+
+
+table, th ,td, thead, tr {
+  text-align: center;
+  width: 300px; 
+
+}
+
+table{
+  position:absolute; top:23px; left:550px;
+  width: 610px;
+}
+
+.botones-container{
+  margin: auto;
+}
+
+/*css de la tabla de egresos*/
+
+.tabla-egresos {
+  text-align: center;
+  width: 610px;
+  border-collapse: collapse;
+  margin: auto;
+  margin-left: -75px;
+}
+
+.tabla-egresos th,
+.tabla-egresos td {
+  padding: 10px;
+ 
+}
+
+.tabla-egresos th {
+  background-color: transparent;
+}
+
+.botones-tabla {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* Estilo para el contenedor de la tabla */
+.contenedor-tabla {
+  width: 70%;
+  margin: auto;
+  padding: 20px;
+  margin-top: 20px; /* Ajuste en el margin-top */
+  position: relative;
+  
+}
+
+.titulo {
+  text-align: center;
+  color: rgb(0, 0, 0);
+}

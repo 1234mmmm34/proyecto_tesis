@@ -1,0 +1,141 @@
+body{
+  background-color: #EDFBE6; 
+  margin: 0%;
+  background-position: center center;
+
+}
+
+
+
+.contenedor2 {
+  height:400px; 
+  width:780px;
+  position:absolute; 
+  overflow:scroll;
+  margin-left: 23%;
+  top:80px;
+}
+
+
+  
+#buscar{
+  position:absolute; 
+  top:35px;  margin-left: 23%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1.25rem;
+  background-color: #f2f7f0;
+}
+
+.contenedor { 
+    width: 80%;
+    margin: auto;
+    height: 70%;
+    padding: 20px;
+    margin-top: 90px;
+    position:absolute; top:13px; left:20px;
+    margin-left: 5%;
+  }
+  
+  input{
+    border:none;
+    text-align: center;
+    width: 200px; 
+    border-bottom:1px solid #757575;
+    background-color: #f2f7f0;
+  }
+  
+  .titulo {
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    color: rgb(0, 0, 0);
+  }    
+  
+
+  
+  .Formulario{
+ /*   display: flex;
+    flex-direction: column;
+   */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1.25rem;
+  }
+  
+  select{
+    text-align: center;
+    width: 200px; 
+    outline: none;
+    border: none;
+    background-color: #f2f7f0;
+    border-bottom: 1px solid #989898;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  .boton-verde, .boton-amarillo, .boton-rojo, .boton-azul{
+    padding: 10px;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  
+    
+   
+  }
+  
+  /*
+  label {
+    margin-top: 10px;
+  }
+  
+  input {
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .boton-verde, .boton-amarillo, .boton-rojo, .boton-azul{
+    padding: 10px;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  */
+  .boton-verde {
+    background-color: #4CAF50; /* Verde */
+  
+    
+    color: white;
+  }
+  
+  .boton-azul {
+    background-color: blue; /* Azul */
+    color: white;
+  }
+  
+  
+  table, th ,td, thead, tr {
+    text-align: center;
+    width: 700px; 
+    font: 1em sans-serif;
+  
+  }
+
+  table{
+    border-bottom: #181212;
+  }
+  
+  table{
+
+    position:absolute; top:10px;
+    width: 910px;
+    font: 1em sans-serif;
+  }
+
+  ::-webkit-scrollbar{
+    background-color: transparent;
+  }
+  

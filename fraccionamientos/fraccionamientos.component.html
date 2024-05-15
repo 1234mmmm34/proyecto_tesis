@@ -1,0 +1,119 @@
+
+<body>
+
+  <div class="top">
+    <h2 class="titulo">Controlador</h2>
+    <p id="descripcion">Un sistema de control de accesos es aquel que gestiona la entrada y salida de usuarios de un área, en este caso, de tu fraccionamiento. Para una mejor administración de tu comunidad, agrega un sistema. </p>
+    
+
+  </div>
+ 
+
+  <div class="sidenav">
+    
+     <p> <button class="boton-agregar" (click)="Agregar_fraccionamiento(form.value)" onclick="myFunction()">+</button> Agregar nuevo controlador</p>
+
+     <div class="lista-controladores">
+
+      <table cellspacing="0" width="100%">
+          <thead>
+              <tr>
+                  <th>Mis controladores</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr mat-row matRowDef="columns: displayedcolumns;">
+                br
+              </tr>
+              <tr mat-row matRowDef="columns: displayedcolumns;">
+                br
+              </tr>
+              <tr mat-row matRowDef="columns: displayedcolumns;">
+                br
+              </tr>
+
+              <tr mat-row matRowDef="columns: displayedcolumns;">
+                br
+              </tr>
+              <tr mat-row matRowDef="columns: displayedcolumns;">
+                br
+              </tr>
+              <tr mat-row matRowDef="columns: displayedcolumns;">
+                br
+              </tr>
+
+              <tr mat-row matRowDef="columns: displayedcolumns;">
+                br
+              </tr>
+              <tr mat-row matRowDef="columns: displayedcolumns;">
+                br
+              </tr>
+              <tr mat-row matRowDef="columns: displayedcolumns;">
+                br
+              </tr>
+              <tr mat-row matRowDef="columns: displayedcolumns;">
+                br
+              </tr>
+              <tr mat-row matRowDef="columns: displayedcolumns;">
+                br
+              </tr>
+              <tr mat-row matRowDef="columns: displayedcolumns;">
+                br
+              </tr>
+
+              <tr mat-row matRowDef="columns: displayedcolumns;">
+                br
+              </tr>
+              <tr mat-row matRowDef="columns: displayedcolumns;">
+                br
+              </tr>
+              <tr mat-row matRowDef="columns: displayedcolumns;">
+                br
+              </tr>
+
+          </tbody>
+      </table>
+    </div>
+
+  </div>
+
+
+
+  <div class="contenedor">
+
+   
+
+    <div class="form"> 
+
+      <p>Controlador actual: </p>
+      
+      <h2 class="titulo">Controlador</h2>  
+
+      <form id="formCrear" class="Formulario" #form="ngForm" [formGroup]="UserGroup">
+        <input type="text" formControlName="ip" name="ip" [(ngModel)]="controlador.ip" placeholder="ip pública del controlador">
+
+        <input type="text" id="port" formControlName="port" name="port"
+          [(ngModel)]="controlador.port" placeholder="puerto">
+
+
+        <input type="text" id="user" formControlName="user" name="user"
+          [(ngModel)]="controlador.user" placeholder="usuario">
+
+
+        <input type="text" id="password" formControlName="password" name="password"
+          [(ngModel)]="controlador.password" placeholder="contraseña">
+
+        <div class="botones-container">
+          <button class="boton" (click)="Agregar_fraccionamiento(form.value)" onclick="myFunction()">Agregar</button>
+        </div>
+      </form> 
+    </div>
+
+      
+  </div>
+
+     
+
+
+ 
+</body>

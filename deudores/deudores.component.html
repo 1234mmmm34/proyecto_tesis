@@ -1,0 +1,51 @@
+<body>
+    <div class="contenedor1">
+        <h2 class="titulo" >Deudores</h2>
+        <!-- <form>
+            <input type="text" style="position: absolute; top: 50px; left: 100px;" class="form-control" name="filtrar" placeholder="buscar" [(ngModel)]="filtroDeudores">
+        </form> -->
+        <div class="contenedor">
+
+            <div class="form" style="width: 2000px;">
+                <table id="example" class="table" cellspacing="0" width="100%" style="width: 2000px;">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Persona</th>
+                            <th>Tipo de Deuda</th>
+                            <th>Nombre de Deuda</th>
+                            <th>Monto</th>
+                            <th>Próximo pago</th>
+                            <th>Retraso (dias)</th>
+                            <!-- <th style="text-align:center;width:200px;">Quitar Acceso</th>
+                            <th style="text-align:center;width:200px;">Conceder Acceso</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let deudor of Deudores_totales; let i = index">
+                            <th scope="row">{{ i + 1 }}</th>
+                            <td>{{ deudor.nombre_persona }}</td>
+                            <td>{{ deudor.tipo_deuda }}</td>
+                            <td>{{ deudor.nombre_deuda }}</td>
+                            <td>{{ deudor.monto }}</td>
+                            <td class="fecha">{{ deudor.proximo_pago }}</td>
+                            <td class="dias-retraso">{{ calcularDiasRetraso(deudor.proximo_pago) }}</td>
+                            <!-- <td>
+                                <a class="btn btn-sm text-white btn-danger" style="margin: auto;" (click)="restringir_acceso(deudor.id_deuda)">
+                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Restringir
+                                </a>
+                            </td>
+                            <td>
+                                <a class="btn btn-sm text-white btn-success" style="margin: auto;" >
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Agregar
+                                </a>
+                            </td> -->
+                        </tr>
+                    </tbody>
+                </table>
+                
+            </div>
+        </div>
+    </div>
+</body>
+

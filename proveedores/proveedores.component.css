@@ -1,0 +1,108 @@
+  
+.contenedor {
+    width: 70%;
+    margin: auto;
+    height: 70%;
+    padding: 20px;
+    margin-top: 10px;
+    position:absolute; top:10px; left:100px;
+    margin-left: 10%;
+  }
+  
+  
+  .titulo {
+    text-align: center;
+    color: rgb(0, 0, 0);
+  }
+  
+  
+  
+  
+  .boton-verde, .boton-amarillo, .boton-rojo, .boton-azul{
+    padding: 10px;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+   
+  }
+  
+  
+  .form {
+    display: block;
+    flex-direction: column;
+   
+  }
+  
+  .Formulario{
+    display: block;
+    flex-direction: column;
+   
+  }
+  
+  
+  .boton-verde {
+    background-color: #4CAF50; /* Verde */
+    color: white;
+    width: 80px;
+    margin-right: 20px;
+    text-align: center;
+  }
+  
+  .boton-azul {
+    background-color: blue; /* Azul */
+    color: white;
+  }
+  
+  .botones-container {
+    display: flex;
+  }
+  
+  table, th ,td, thead, tr {
+    text-align: center;
+    width: 300px; 
+  
+  }
+  
+  
+  table{
+    margin: auto;
+    margin-top: 300px;
+    width: 610px;
+  }
+  
+  .Formulario {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 1.25rem;
+  }
+  
+  select, #fechaNacimiento{
+    width: 180px;
+    height: 26px;
+  }
+  
+  
+  #telefono{
+    width: 210px;
+    height: 26px;
+  }
+  
+  #lote1{
+    display: inline-block;
+  
+  
+  }
+  
+  a {
+    display: flex; 
+    flex-direction: row; 
+  }
+
+  .botones-tabla{
+    position: relative;
+    z-index: 2;
+  }
+  

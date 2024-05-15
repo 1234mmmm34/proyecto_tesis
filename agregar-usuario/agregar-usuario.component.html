@@ -1,0 +1,367 @@
+<body>
+  <div>
+    <h2 class="titulo">Usuarios</h2>
+    <p id="descripcion">Al tener un sistema de usuarios, puedes controlar quién tiene acceso a tu comunidad en línea.
+      Esto te permite proteger la privacidad y seguridad de los miembros y de la información compartida dentro de la
+      comunidad. </p>
+  </div>
+
+  <hr>
+
+  <div class="contenedor">
+    <form id="buscar">
+      <input type="text" id="tbuscar" class="form-control" name="filtrar" placeholder="buscar"
+        [(ngModel)]="filtroUsuarios">
+      <label for="modal" class="boton">Agregar</label>
+    </form>
+
+    <div class="contenedor2" *ngIf="this.usuarios.length>0; else noencontrado">
+
+      <table id="example" class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Apellido paterno</th>
+            <th>Apellido materno</th>
+            <th class="telefono">Teléfono</th>
+            <!-- <th>Fecha de nacimiento</th> -->
+            <th>Tipo de usuario</th>
+            <th class="correo">Correo</th>
+            <th>Acceso</th>
+            <th>Acciones</th>
+
+            <!--
+            <th style="text-align:center;width:100px;">
+              Permitir Acceso
+            </th>
+            <th style="text-align:center;width:100px;">
+              Restringir Acceso
+            </th>
+            <th style="text-align:center;width:100px;">
+              Borrar
+            </th>
+
+            -->
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr mat-row matRowDef="columns: displayedcolumns;"
+            *ngFor="let usuario of usuarios | filtroUsuarios: 'nombre': filtroUsuarios">
+            <th scope="row">{{usuario.id_persona}}</th>
+            <td>{{usuario.nombre}}</td>
+            <td>{{usuario.apellido_pat}}</td>
+            <td>{{usuario.apellido_mat}}</td>
+            <td class="telefono">{{usuario.telefono}}</td>
+            <!-- <td>{{usuario.fecha_nacimiento}}</td> -->
+            <td>{{usuario.tipo_usuario}}</td>
+            <td class="correo">{{usuario.correo}}</td>
+            <th>{{usuario.hikvision}}</th>
+            <th><label for="modal_acciones" (click)="seleccionar(usuario.id_persona)"><mat-icon style="font-size:medium; margin-left: 30px;">visibility</mat-icon></label></th>
+
+
+            <!--
+
+
+            <td><a class="btn btn-sm text-white btn-success" style="margin-right: auto;">
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true" (click)="enable(usuario)"></span>
+              </a>
+            </td>
+            <td>
+              <a class="btn btn-sm text-white btn-danger" style="margin-left: auto;">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true" (click)="disable(usuario)"></span>
+              </a>
+            </td>
+            <td>
+              <a class="btn btn-sm text-white btn-danger" style="margin-left: auto;">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true" (click)="delete(usuario)"></span>
+              </a>
+            </td>
+
+            -->
+
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pages">
+
+      <p>Filas por página</p> <input type="number" id="pageNumber" class="page">
+
+      <button class="boton-verde" (click)="paginador_atras()">&lt;</button>
+      <p style="padding-top: 20px; "> {{cont}} - 5 </p>
+      <button class="boton-verde" (click)="paginador_adelante()">&gt;</button>
+
+  <!--    <a href="https://www.paypal.com/ncp/payment/R78AZGSW44VFU" target="_blank">Pagar con PayPal</a>  -->
+
+    </div>
+
+    <ng-template #noencontrado>
+      <div class="div-noen">
+        <img class="noencontrado" src="./no-en1.jpg">
+      </div>
+    </ng-template>
+  </div>
+
+
+
+  <!-------                              MODAL                          -->
+
+
+  <input type="checkbox" id="modal">
+
+  <label for="modal" class="modal-background"></label>
+
+
+
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Agregar usuario</h3>
+
+      <label for="modal">
+        <img
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC"
+          width="16" height="16" alt="">
+      </label>
+
+
+
+    </div>
+
+
+
+    <div class="form">
+
+
+
+      <div class="tabs1">
+
+        <ul class="tabs-panels1">
+
+          <li class="tabs-panel1">
+
+            <form id="formCrear" class="Formulario" #form="ngForm" [formGroup]="UserGroup">
+              <p>
+                <input type="text" class="textb" formControlName="correo" name="correo" [(ngModel)]="usuario.correo"
+                  placeholder="Correo electrónico">
+              </p>
+
+              <p>
+                <label id="agregar" (click)="mandar_correo(form.value)">Enviar</label>
+              </p>
+            </form>
+
+
+          </li>
+
+          <li class="tabs-panel1">
+
+
+            <form id="formCrear" class="Formulario" #form="ngForm" [formGroup]="UserGroup">
+
+              <p>
+                <input type="text" class="textb" formControlName="nombre" name="nombre" [(ngModel)]="usuario.nombre"
+                  placeholder="Nombre">
+              </p>
+
+              <p>
+                <input type="text" class="textb" id="apellidoP" formControlName="apellido_pat" name="apellido_pat"
+                  [(ngModel)]="usuario.apellido_pat" placeholder="Apellido paterno">
+
+              </p>
+
+              <p>
+                <input type="text" class="textb" id="apellidoM" formControlName="apellido_mat" name="apellido_mat"
+                  [(ngModel)]="usuario.apellido_mat" placeholder="Apellido materno">
+              </p>
+
+
+              <p>
+
+                <input type="text" class="textb" id="telefono" formControlName="telefono" name="telefono"
+                  [(ngModel)]="usuario.telefono" placeholder="Teléfono">
+              </p>
+              <p>
+                <input type="text" class="textb" id="fechaNacimiento" name="fecha_nacimiento"
+                  formControlName="fecha_nacimiento" [(ngModel)]="usuario.fecha_nacimiento" required ngModel
+                  placeholder="Fecha de nacimiento" onfocus="(this.type='date')" />
+                <!--  <input type="date" class="textb" id="fechaNacimiento" name="fecha_nacimiento" formControlName="fecha_nacimiento" [(ngModel)]="usuario.fecha_nacimiento" required ngModel placeholder="Fecha de nacimiento"> -->
+
+              </p>
+              <!-- 
+                  <p>
+                    <input type="email" class="textb" id="correo" name="correo" formControlName="correo"
+                      [(ngModel)]="usuario.correo" required ngModel placeholder="Correo">
+                  </p>
+                  <p>
+                    <input type="password" class="textb" id="Contrasenia" name="contrasenia" formControlName="contrasenia"
+                      [(ngModel)]="usuario.contrasenia" required ngModel placeholder="Contraseña">
+                  </p>
+                  <p>
+                    <input type="password" class="textb" id="confirmarContrasena" name="confirmarContrasena"
+                      formControlName="confirmarContrasena" [(ngModel)]="usuario.confirmarContrasena" required ngModel
+                      placeholder="Confirmar contraseña">
+                  </p>
+        
+                  -->
+
+              <!--
+                <div class="botones-container">
+                  <button class="boton-azul" (click)="actualizar_usuario(form.value)">Actualizar
+                   </button>
+                </div>
+               -->
+
+              <!--
+                <div class="botones-container">
+                  <button class="boton-azul" (click)="actualizar_usuario(form.value)">Actualizar
+                  </button>
+                </div>
+                 -->
+              <p>
+                <label id="agregar" (click)="agregar_usuario(form.value)">Agregar</label>
+
+              </p>
+
+
+            </form>
+
+
+          </li>
+
+        </ul>
+
+
+        <ul class="tabs-thumbs1">
+
+          <li class="tabs-thumb1"><a class="eti">o unir al propietario a la comunidad en línea</a></li>
+          <li class="tabs-thumb1"><a class="eti">el propietario no cuenta con un correo electrónico</a></li>
+
+
+
+        </ul>
+      </div>
+
+
+
+    </div>
+
+
+  </div>
+  <!---                               FINAL MODAL                                  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-------                              MODAL                          -->
+
+
+  <input type="checkbox" id="modal_acciones">
+
+  <label for="modal_acciones" class="modal-background"></label>
+
+
+
+  <div class="modal_acciones">
+    <div class="modal-header">
+      <h3>Acciones</h3>
+
+      <label for="modal_acciones">
+        <img
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC"
+          width="16" height="16" alt="">
+      </label>
+
+
+
+    </div>
+
+
+
+    <div class="form">
+
+
+      <td><a class="btn btn-sm text-white btn-success" style="margin-right: auto;">
+          <span class="glyphicon glyphicon-pencil" aria-hidden="true" (click)="enable(usuario)"></span>
+        </a>
+      </td>
+      <td>
+        <a class="btn btn-sm text-white btn-danger" style="margin-left: auto;">
+          <span class="glyphicon glyphicon-remove" aria-hidden="true" (click)="disable(usuario)"></span>
+        </a>
+      </td>
+      <td>
+        <a class="btn btn-sm text-white btn-danger" style="margin-left: auto;">
+          <span class="glyphicon glyphicon-remove" aria-hidden="true" (click)="delete(usuario)"></span>
+        </a>
+      </td>
+
+
+
+    </div>
+
+
+  </div>
+
+  <!---                               FINAL MODAL                                  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>

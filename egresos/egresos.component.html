@@ -1,0 +1,70 @@
+<body>
+<div class="contenedor">
+    
+  <div class="form">
+    <h2 class="titulo">Egresos</h2>
+    
+    <form id="formCrear" class="Formulario" #egresoForm="ngForm" (ngSubmit)="agregarEgreso()">
+      <label for="fraccionamiento">Fraccionamiento:</label>
+      <input type="text" id="fraccionamiento" name="fraccionamiento" [(ngModel)]="id_fraccionamiento" required disabled>
+    
+      <label for="proveedor">Proveedor:</label>
+      <select id="proveedor" name="proveedor" [(ngModel)]="egresoModel.proveedor" required>
+        <option *ngFor="let proveedor of proveedores" [value]="proveedor.nombre">{{proveedor.id_proveedor}}-{{ proveedor.nombre }}</option>
+      </select>
+    
+      <label for="monto">Monto:</label>
+      <input type="number" id="monto" name="monto" [(ngModel)]="egresoModel.monto" required>
+    
+      <label for="concepto">Concepto:</label>
+      <input type="text" id="concepto" name="concepto" [(ngModel)]="egresoModel.concepto" required>
+
+      <label for="fechaEgreso">Fecha de egreso:</label>
+      <input type="date" id="fechaEgreso" name="fechaEgreso" [(ngModel)]="egresoModel.fecha" required>
+
+    
+      <label for="descripcion">Descripción:</label>
+      <textarea id="descripcion" name="descripcion" [(ngModel)]="egresoModel.descripcion" required></textarea>
+    
+      <div class="botones-container">
+        <button type="submit" class="boton-verde">Agregar</button>
+        <button (click)="actualizarEgreso()" type="button" class="boton-verde">Actualizar</button>
+      </div>
+    </form>
+    
+  </div>
+
+  
+    <table class="tabla-egresos">
+      <thead>
+        <tr>
+          <th>ID Egreso</th>
+          <th>Concepto</th>
+          <th>Descripción</th>
+          <th>Proveedor</th>
+          <th>Monto</th>
+          <th>Fecha</th>
+          <th>Editar</th>
+          <th>Eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let egreso of egresos">
+          <td>{{ egreso.id_egreso }}</td>
+          <td>{{ egreso.concepto }}</td>
+          <td>{{ egreso.descripcion }}</td>
+          <td>{{ egreso.proveedor }}</td>
+          <td>{{ egreso.monto }}</td>
+          <td>{{ egreso.fecha }}</td>
+          <td>
+            <button (click)="seleccionarEgreso(egreso)" class="botones-tabla" style="background-color: rgb(52, 52, 16);">seleccionar</button>
+          </td>
+          <td>
+            <button (click)="eliminarEgreso(egreso.id_egreso)" class="botones-tabla" style="background-color: red;">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+</div>
+</body>

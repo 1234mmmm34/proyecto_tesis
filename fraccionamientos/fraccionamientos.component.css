@@ -1,0 +1,198 @@
+body{
+  background-color: #f2f3f4;
+} 
+
+
+.contenedor {
+  width: 30%;
+  margin: auto;
+  height: 90%;
+  padding: 20px;
+  margin-top: 100px;
+  position:absolute; top:23px; left:10px;
+  margin-left: 20%;
+}
+
+.sidenav{
+  width: 400px;
+  background-color: #e2e0e4;
+  height: 100%;
+  box-shadow: 0px 0px 10px 0px #a7a4a4 inset; /* Sombra */
+  padding-left: 30px;
+  
+
+
+}
+
+.lista-controladores {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 200px;
+  margin-left: 30px;
+  margin-top: 50px;
+  background-color: #e2dcdc; /* Color de fondo del div */
+  overflow: hidden; /* Oculta la barra de desplazamiento */
+}
+
+.titulo {
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  margin-left: 50px;
+
+
+ 
+}
+
+.Formulario{
+  display: flex;
+  flex-direction: column;
+  grid-gap: 0.20rem;
+  height: 400px;
+  
+  
+}
+
+.boton-verde, .boton-amarillo, .boton-rojo, .boton-azul{
+  padding: 10px;
+  margin: 10px 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  
+ 
+}
+
+
+
+table, th  {
+  text-align: center;
+  width: 300px; 
+
+  background-color: #e2e0e4;
+  box-shadow: 0px 0px 10px 0px #afaeae; /* Sombra */
+
+}
+
+
+
+.botones-container{
+  margin: auto;
+}
+
+input{
+  border:none;
+  border-bottom:1px solid #757575;
+  background-color: transparent;
+  margin-top: 30px;
+  width: 70%;
+  margin-left: 15%;
+}
+
+#controlador{
+  margin-top: 100px;
+  position:absolute; top:40px; left:550px;
+  width: 610px;
+  border: #757575;
+} 
+
+#controlador > form > input,  #controlador > form > label{
+  width: 50%;
+  margin: auto;
+  margin-bottom: 10px;
+
+}
+
+
+
+#informacion{
+  margin-top: 100px;
+  position:absolute; top:40px; left:550px; right: 10px;
+  background-color: transparent;
+}
+
+#informacion > form > input,  #informacion > form > label{
+  width: 50%;
+  margin: auto;
+  margin-bottom: 10px;
+  background-color: transparent;
+}
+
+.boton {
+  background-color: #242434;
+  outline: none;
+  color: #ffffff;
+  font-size: 14px;
+  height: 40px;
+  font-weight: normal;
+  width: 100px;
+  text-align: center;
+
+  border-color: #242434;
+  border-radius: 5px;
+
+
+}
+
+.boton:hover {
+  color: #ffffff;
+  background-color: #6c5bb8;
+  border-color: #6c5bb8;
+}
+
+.titulo {
+  text-align: justify !important;
+  padding-top: 20px;
+  margin-left: 100px;
+
+  color: rgb(97, 94, 94) !important;
+
+}
+
+#descripcion {
+  text-align: justify !important;
+  margin-left: 100px;
+  margin-right: 70px;
+  color: rgb(97, 94, 94) !important;
+}
+
+
+
+.top{
+  
+
+
+  box-shadow: 0px 0px 10px 0px #a7a4a4; /* Sombra */
+  padding-bottom: 10px;
+  
+  z-index: -1;
+
+}
+
+
+.boton-agregar{
+  background-color: #242434;
+  outline: none;
+  color: #ffffff;
+  font-size: 14px;
+
+  font-weight: normal;
+
+  text-align: center;
+  height: 40px;
+  width: 40px;
+  border-color: #242434;
+  border-radius: 50%;
+
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+
+}

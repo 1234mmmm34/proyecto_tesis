@@ -1,0 +1,196 @@
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<body>
+
+    <div>
+        <h2 class="titulo">Acuerdos</h2>
+        <p id="descripcion">promueven la comunicación efectiva, establecen normas compartidas, promueven la
+            responsabilidad y cultivan un
+            sentido de pertenencia. </p>
+
+    </div>
+    <hr>
+
+
+    <div class="contenedor1">
+        <div id="buscar">
+
+
+            <input type="text" name="filtrar" placeholder="buscar" [(ngModel)]="filtroAcuerdos">
+            <input type="date" name="filtrarFecha" [(ngModel)]="filtroFecha" id="buscar1">
+            <label for="modal" class="boton">Agregar</label>
+
+        </div>
+
+        <div class="contenedor2">
+
+            <table class="table" width="100%">
+                <thead>
+                    <tr>
+
+                        <th scope="col" width="300px" style=" font: 1em sans-serif;">Asunto</th>
+                        <th scope="col">Detalles</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col" style="text-align:center;width:200px;">
+                            Acciones
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr tr mat-row matRowDef="columns: displayedcolumns;"
+                        *ngFor="let acuerdo of acuerdos1 | filtroAcuerdos: 'asunto': filtroAcuerdos | filtroFecha: 'fecha': filtroFecha">
+                        <td>{{ acuerdo.asunto }}</td>
+                        <td>{{ acuerdo.detalles }}</td>
+                        <td>{{ acuerdo.fecha }}</td>
+                        <td id="td-view">
+
+                            <button type="button" id="view-button">
+                                <mat-icon style="font-size:medium;">visibility</mat-icon>
+                            </button>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+ 
+
+        <div class="pages">
+
+            <p>Filas por página</p> <input type="number" id="pageNumber" class="page">
+
+            <button class="boton-verde" (click)="paginador_atras()">&lt;</button>
+            <p style="padding-top: 20px; "> {{cont}} - 5 </p>
+            <button class="boton-verde" (click)="paginador_adelante()">&gt;</button>
+
+        <!--    <a href="https://www.paypal.com/ncp/payment/R78AZGSW44VFU" target="_blank">Pagar con PayPal</a>  -->
+
+        </div>
+
+
+
+
+        <!--------------------------FINAL MODAL ------------------------------------------------>
+
+
+
+        <input type="checkbox" id="modal">
+
+        <label for="modal" class="modal-background"></label>
+
+
+
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Agregar notificación</h3>
+
+                <label for="modal">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC"
+                        width="16" height="16" alt="">
+                </label>
+
+
+
+            </div>
+
+
+            <div class="form"> 
+
+                <!-- Formulario para agregar un nuevo acuerdo -->
+                <form id="formCrear" class="Formulario" #form="ngForm" (ngSubmit)="agregarAcuerdo(form.value)">
+                    <!-- ... Otros campos del formulario ... -->
+
+                    <div class="form-group">
+                        <input type="text" id="asunto" name="asunto" placeholder="Asunto del acuerdo" ngModel required>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea id="detalles" name="detalles" rows="4" placeholder="Detalles del acuerdo" ngModel required></textarea>
+                    </div>
+
+                    <div class="botones-container">
+                        <button class="boton-verde" type="submit">Agregar</button>
+                    </div>
+
+                </form>
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+    <!------------------------------   MODAL   ---------------------------------------------->
+
+
+
+</body>
+
+
+
+
+
+
+
+<!--
+<div *ngIf="!acuerdos || acuerdos.length === 0">
+    
+    <div appNoEncontrado></div>
+   
+    
+</div>
+
+ 
+ <body *ngIf="acuerdos && acuerdos.length > 0" class="contenedor1">
+        <form id="buscar">
+            <input type="text" name="filtrar" placeholder="buscar" [(ngModel)]="filtroAcuerdos">
+            <input type="date" name="filtrarFecha" [(ngModel)]="filtroFecha" id="buscar1">
+        </form>
+
+        <div class="contenedor2">
+            <table id="example" class="table" cellspacing="20" width="100%">
+                <thead>
+                    <tr>
+                        <th scope="col">Asunto</th>
+                        <th scope="col">Detalles</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Borrar acuerdo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr
+                        *ngFor="let acuerdo of acuerdos | filtroAcuerdos: 'asunto': filtroAcuerdos | filtroFecha: 'fecha': filtroFecha">
+                        <td>{{ acuerdo.asunto }}</td>
+                        <td>{{ acuerdo.detalles }}</td>
+                        <td>{{ acuerdo.fecha }}</td>
+                        <td>
+                            <a class="btn btn-sm text-white btn-danger" style="margin-left:16px;"
+                                (click)="eliminarAcuerdo(acuerdo.id_acuerdo,acuerdo.id_fraccionamiento)">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+
+-->
