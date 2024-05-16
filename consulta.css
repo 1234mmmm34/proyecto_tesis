@@ -41,36 +41,6 @@ body {
     display: flexbox;
   }
   
-  /*
-  .boton {
-    background-color: #242434;
-    outline: none;
-    color: #ffffff;
-    font-size: 14px;
-    height: 40px;
-    font-weight: normal;
-    width: 100px;
-    text-align: center;
-    
-    text-transform: uppercase;
-    border-color: #242434;
-    border-radius: 5px;
-    justify-items: right;
-   
-    margin-left: 500px;
-  
-    margin-left: 80%;
-    margin-top: 15px;;
-    padding-top: 10px;
-  
-    margin-right: 20px;
-    position: fixed;
-  
-  
-  }
-  
-  
-  */
   .boton {
     background-color: #242434;
     outline: none;
