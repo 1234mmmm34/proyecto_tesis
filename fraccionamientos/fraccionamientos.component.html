@@ -3,7 +3,7 @@
   <div class="top">
     <h2 class="titulo">Controlador</h2>
     <p id="descripcion">Un sistema de control de accesos es aquel que gestiona la entrada y salida de usuarios de un
-      área, en este caso, de tu fraccionamiento. Para una mejor administración de tu comunidad, agrega un sistema. </p>
+      área, en este caso, de tu comunidad. Para una mejor administración de tu comunidad, agrega un sistema. </p>
 
 
   </div>
@@ -35,11 +35,14 @@
 
 
   <div class="contenedor">
-    <img src="controlador.png" style="width: 700px; margin-left: 70%; margin-top: 20%">
+
+    <button id="conexion"></button><p> conectado</p>
+
+    <img src="controlador.png" alt="description" id="img-controlador">
 
     <p id="mensaje-bienvenida">¡Bienvenido al panel de controladores! selecciona o agrega un nuevo controlador</p>
 
-
+ 
   </div>
 
 
@@ -82,7 +85,7 @@
         </select>
 
         <a [href]="'mailto:destinatario@example.com?subject='" style="font-size: smaller;" id="enviar_correo">
-          Mi modelo de controlador no se encuentra en la lista
+          El modelo de mi controlador no se encuentra en la lista
         </a>
 
         <div class="help-container">

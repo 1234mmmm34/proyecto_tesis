@@ -1,24 +1,50 @@
 body{
   background-color: #f2f3f4;
+  margin: auto;
 } 
 
+#conexion{
+  background-color: #09e21b;
+  border-color: #09e21b;
+  border-radius: 50%;
+  width: 5px;
+  height: 13px;
+
+
+
+}
 
 .contenedor {
-  width: 30%;
-  margin: auto;
+
+  width: 50%;
+
   height: 90%;
   padding: 20px;
   margin-top: 100px;
-  position:absolute; top:23px; left:10px;
-  margin-left: 20%;
+  position: absolute;
+  top: 80px;
+  left: 30%;
 
-  
+
+
+}
+
+
+#img-controlador{
+  width: 420px;
+  height: 400px;
+  margin-left: 40%;
+  background-image: url("controlador.png");
+  background-repeat: no-repeat;
 }
 
 #mensaje-bienvenida{
- position: absolute;
  
+  margin-left: 35%;
+  width: 100%;
 }
+
+
 
 .sidenav{
   width: 400px;
