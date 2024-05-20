@@ -4,13 +4,20 @@ body{
 } 
 
 #conexion{
-  background-color: #09e21b;
-  border-color: #09e21b;
   border-radius: 50%;
   width: 5px;
   height: 13px;
+}
 
+.button-rojo {
+  background-color: #f51717;
+  border-color: #f51717;
 
+}
+
+.button-verde {
+  background-color: #09e21b;
+  border-color: #09e21b;
 
 }
 

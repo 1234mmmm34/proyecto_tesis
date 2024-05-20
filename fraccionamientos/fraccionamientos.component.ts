@@ -51,29 +51,26 @@ this.UserGroup = this.fb.group({
 
 ngOnInit(): void {
   this.fetchDataHikvision(this.dataService.obtener_usuario(1));
-
-  
-  $(function myFunction() {
-    console.log("si entra")
-    var x = <HTMLVideoElement>document.getElementById("informacion");
-    var y = <HTMLVideoElement>document.getElementById("controlador");
-    if (x.style.display === "block") {
-        x.style.display = "none";
-        y.style.display = "block";
-    } else {
-        x.style.display = "block";
-        y.style.display = "none";
-    }
-  });
-
- 
+  this.cambiarColorBoton();
 
 }
 
-//displayedcolumns: string[] = ['nombre', 'direccion', 'coordenadas', 'id_tesorero', 'dia_pago'];
 
-
-
+cambiarColorBoton(): void {
+  const boton = document.getElementById("conexion");
+  if (boton) {
+    const numeroAleatorio = Math.random();
+    if (numeroAleatorio > 0.5) {
+      boton.classList.add("button-rojo");
+      boton.classList.remove("button-verde");
+    } else {
+      boton.classList.add("button-verde");
+      boton.classList.remove("button-rojo");
+    }
+  } else {
+    console.error("El botón con el id 'conexion' no se encontró en el DOM.");
+  }
+}
 
 onRowClicked(fraccionamiento: any){
   this.id_fracc = fraccionamiento['id_fraccionamiento'];
