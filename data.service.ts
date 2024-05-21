@@ -95,8 +95,13 @@ export class DataService {
     return response as any; // Assuming the response is an object
 
   }
+/*
+  conexion_hikvision(user: string, password: string, port: string, ip: string){
+  let direccion = "https://localhost:44397/Sesion/Conexion_Hikvision?ip="+this.obtener_usuario(9)+"&password="+this.obtener_usuario(11)+"&port="+this.obtener_usuario(10)+"&user="+this.obtener_usuario(12);
+  return this.http.get<boolean>(direccion);
+  }
 
-
+*/
   fecha(date: Date){
     return formatDate(date, 'yyyy-MM-dd', 'en-US');
   } 
@@ -110,7 +115,6 @@ export class DataService {
         return data.correo;
       }else if(op==3){
         return data.id_fraccionamiento;
-        
       }else if(op==4){
         return data.id_lote;
       }else if(op==5){
@@ -122,9 +126,29 @@ export class DataService {
       else if(op==7){
         return data.tipo_usuario;
       }
-
+      else if(op==8){
+        return data.nombre;
+      }
+      else if(op==9){
+        return data.conexion;
+      }
+      /*
+    else if(op==8){
+      return data.nombre;
+    }else if(op==9){
+      return data.ip;
+    }
+    else if(op==10){
+      return data.port;
+    }
+    else if(op==11){
+      return data.password;
+    }
+    else if(op==12){
+      return data.user;
+    }
+     */
       
-
     } 
 
   
