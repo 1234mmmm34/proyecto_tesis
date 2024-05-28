@@ -14,7 +14,10 @@ import { Router } from "@angular/router";
 export class PanelPrincipalAdminComponent {
   imagen: any;
 
-
+  esPanelAdmin(): boolean {
+    return this.router.url === 'Home';
+  }
+  
   mobileQuery: MediaQueryList;
 
   //fillerNav = Array.from({length: 50}, (_, i) => `Nav Item ${i + 1}`);

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, retry } from 'rxjs';
 import { fraccionamientos, controladores } from '../app/modelos/fraccionamientos';
 import { sesion, sesions, usuarios } from '../app/modelos/usuarios'
-import {  deudas, deuda, deudores } from "../app/modelos/deudas"
+import {  deudas, deuda, deudores, graficas, entradas } from "../app/modelos/deudas"
 import { lotes } from '../app/modelos/propiedades';
 import { inquilinos } from '../app/modelos/inquilinos';
 import {formatDate } from '@angular/common';
@@ -95,6 +95,16 @@ export class DataService {
     return response as any; // Assuming the response is an object
 
   }
+
+  consultarDeudasPorCobrar():Observable<graficas[]>{
+    let direccion = `https://localhost:44397/api/Graficos/Consultar_DeudasPorCobrar?id_fraccionamiento=${this.obtener_usuario(1)}`;
+    return this.http.get<graficas[]>(direccion);
+  }
+
+  consultarEntradas():Observable<entradas[]>{
+    let direccion = `https://localhost:44397/api/Graficos/Consultar_Entradas`;
+    return this.http.get<entradas[]>(direccion);
+  }
 /*
   conexion_hikvision(user: string, password: string, port: string, ip: string){
   let direccion = "https://localhost:44397/Sesion/Conexion_Hikvision?ip="+this.obtener_usuario(9)+"&password="+this.obtener_usuario(11)+"&port="+this.obtener_usuario(10)+"&user="+this.obtener_usuario(12);
@@ -151,7 +161,33 @@ export class DataService {
       
     } 
 
-  
+
+
+
+    obtener_graficas(op: number){
+      var graficas = (JSON.parse(localStorage.getItem("graficas") || '{}'));
+      if(op==1){
+        return graficas.cuentas_cobrar;
+      }
+      else if(op==2){
+        return graficas.sum_variables;
+      }else if(op==3){
+        return graficas.sum_novariables;
+      }else if(op==4){
+        return graficas.variables;
+      }else if(op==5){
+        return graficas.novariables;
+      }
+      else if(op==6){
+        return graficas.por_variables;
+      }
+      else if(op==7){
+        return graficas.por_novariables;
+    } 
+
+
+
+    }
 
 }
 

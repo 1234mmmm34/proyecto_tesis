@@ -1,10 +1,22 @@
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+
 <body>
 
+  <div>
+    <h2 class="titulo">Deudas</h2>
+    <p id="descripcion">Gestiona los movimientos financieros de tu comunidad.</p>
 
-  <div class="div-opciones-deuda" style="margin-left: 43%">
+</div>
+<hr>
+
+<div class="contenedor1">
+ <div id="buscar">
     <select class="select-deuda" [(ngModel)]="tipo_formulario" (change)="onChangeTipoDeuda($event)"
       style="width: 200px; height: 30px;">
-      <option value="" disabled selected>Selecciona el tipo de deuda</option>
+      <option value="" disabled selected>-- Selecciona el tipo de deuda --</option>
       <option value="">Deudas Ordinarias</option>
       <option value="extraordinario">Deudas Extraordinarias</option>
     </select>
@@ -13,7 +25,7 @@
 
 
   <div *ngIf="tipo_formulario==''">
-
+    <div class="contenedor2">
     <table id="example" class="table" cellspacing="0" width="100%">
       <thead>
         <tr>
@@ -51,9 +63,10 @@
       </tbody>
     </table>
   </div>
+</div>
 
   <div *ngIf="tipo_formulario=='extraordinario'">
-
+    <div class="contenedor2">
     <table id="example" class="table" cellspacing="0" width="100%">
       <thead>
         <tr>
@@ -91,4 +104,7 @@
       </tbody>
     </table>
   </div>
+</div>
+</div>
+
 </body>

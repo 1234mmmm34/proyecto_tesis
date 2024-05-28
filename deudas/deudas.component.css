@@ -1,222 +1,379 @@
-body{
-  background-color: #EDFBE6;
+body {
+
+
+  background-color: #f2f3f4;
   margin: 0%;
   background-position: center center;
 
 }
 
-.Formulario1{
+#deuda-titulo{
+  margin-left: 60px;
+  margin-top: 20px;
+  color: rgb(97, 94, 94)
+}
+ 
+.sidenav{
+  width: 400px;
+  background-color: #e2e0e4;
+  height: 100%;
+  box-shadow: 0px 0px 10px 0px #a7a4a4 inset; /* Sombra */
+  padding-left: 30px;
   display: flex;
-  flex-direction: column;
+
 
 }
-input, p > select, textarea{
-  width: 300px; 
-  margin-bottom: 8px;
+.contenedor {
+
+  width: 50%;
+
+  height: 90%;
+  padding: 20px;
+  margin-top: 100px;
+  position: absolute;
+  top: 20px;
+  left: 25%;
+
+
+
+}
+
+.top{
+  
+
+
+  box-shadow: 0px 0px 10px 0px #a7a4a4; /* Sombra */
+  padding-bottom: 10px;
+  
+  z-index: -1;
+
+}
+
+
+input {
+  border: none;
+  border-bottom: 1px solid #7c7b7b;
+  background-color: transparent;
+  width: 350px;
+  height: 40px;
+  outline: 0;
+  text-align: center;
+
+}
+
+
+.contenedor2 {
+  height: 600px;
+  width: 50%;
+
+  overflow: hidden;
+  margin-left: 20%;
+  padding-top: 200px;
+
+  display: flexbox;
+}
+
+ 
+.boton {
+  background-color: #242434;
+  outline: none;
+  color: #ffffff;
+  font-size: 14px;
+  height: 40px;
+  font-weight: normal;
+  width: 100px;
+  text-align: center;
+   
+  text-transform: uppercase;
+  border-color: #242434;
+  border-radius: 5px;
+
+   
+  padding-top: 10px;
+  margin-left: 150%;
+  margin-right: 3%;
+
+
+
+}
+
+.boton-agregar {
+  background-color: #242434;
+  outline: none;
+  color: #ffffff;
+  font-size: 14px;
+  height: 40px;
+  font-weight: normal;
+  width: 100px;
+  text-align: center;
+  margin-left: 40%;
+  text-transform: uppercase;
+  border-color: #242434;
+  border-radius: 5px;
+
+
+
+
+}
+
+.boton:hover, .boton-agregar:hover {
+  color: #ffffff;
+  background-color: #6c5bb8;
+  border-color: #6c5bb8;
+}
+
+#view-button{
+  background-color: #ffffff;
+  border: #ffffff;
+  margin-left: 40%;
+}
+
+
+
+
+
+
+
+
+#buscar {
+  position: absolute;
+  top: 80px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
+
+  padding-top: 10px;
+  padding-left: 50px;
+  padding-bottom: 20px;
+  background-color: #ffffff;
+
+  width: 140%;
+  height: 8%;
+
+  border-collapse: collapse;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/*
+    input{
+      border:none;
+      text-align: center;
+      width: 200px; 
+      border-bottom:1px solid #757575;
+
+    }
+     
+*/
+
+.titulo {
+  text-align: justify !important;
+  padding-top: 20px;
+  margin-left: 100px;
+  color: rgb(97, 94, 94) !important;
+
+}
+
+#descripcion {
+  text-align: justify !important;
+  margin-left: 100px;
+  color: rgb(97, 94, 94) !important;
+}
+
+
+textarea{
+  width: 350px;
+  resize: none;
+}
+
+hr {
+  height: 10px;
+  border: 0;
+  box-shadow: 0 10px 10px -10px #a7a4a4 inset;
+}
+
+
+
+
+select {
+  text-align: center;
+  width: 350px;
   outline: none;
   border: none;
   background-color: transparent;
-  border-bottom: 1px solid #989898;
-  text-align: center;
+
+  border-bottom: 1px solid #979595;
+  padding-top: 15px;
+
+
+
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 
 }
- 
-input, select{
-  width: 300px;
-  border: none;
-/*  border: 1px solid transparent; */
 
-  background-color: transparent;
-  border-bottom: 1px solid #989898;
-}
 
-#dias_gracia{
-  width: 300px;
-  border: none;
-/*  border: 1px solid transparent; */
 
-  background-color: transparent;
-  border-bottom: 1px solid #989898;
-}
 
-p > #telefono, p > #fechaNacimiento{
-  width: 300px; 
 
-  border: none;
-  /*  border: 1px solid transparent; */
-  
-    background-color: transparent;
-    border-bottom: 1px solid #989898;
+
+
+table {
+  background-color: #ffffff;
+  position: absolute;
+  top: 350px;
+  width: 70%;
+  font: 1em sans-serif;
+  margin: auto;
+  left: 26%;
+
+  border-collapse: collapse;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 
-.div-opciones-deuda{
-  margin-left: 15%;
-  margin-top: 10px;
+.pages {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 75%;
+  left: 40%;
+}
+
+#pageNumber {
+  width: 60px;
+}
+
+#td-view{
+  text-align: center;
 }
 
 
-.contenedor{
-  padding-top: 20px;
-  margin-right: 20%;
+
+/*    MODAL   */
+
+
+
+
+
+
+
+input[type="checkbox"]:checked ~ .modal,
+input[type="checkbox"]:checked ~ .modal-background {
+	display: block;
 }
 
-.mat-toolbar{
-  /*  background-color: #768650;  */
-   background-color: #575d43; 
-  }
 
-  .titulo {
+.modal-background {
+	width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    z-index: 9998;
+}
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    display: none;	
+    width: 500px;
+    height: 550px;
+    background-color: #fff;
+    box-sizing: border-box;
+    z-index: 9999;
+}
+.modal > p {
+	padding: 15px;
+    margin: 0;
+}
+.modal-header {
+	background-color: #f9f9f9;
     
-    color: rgb(0, 0, 0);
-    margin-top: 30px;
-
-    margin-left: 16%;
-    
-    text-align: left;
-
-  }
-   
-  
-  input, select{
-    width: 300px;
-    border: 1px solid transparent;
-    background-color: transparent;
-    border-bottom: 1px solid #989898;
-  }
-
-  p > #telefono, p > #fechaNacimiento{
-    width: 500px; 
-    border: 1px solid transparent;
-    background-color: transparent;
-    border-bottom: 1px solid #989898;
-  }
-  
-  .boton-verde, .boton-amarillo, .boton-rojo, .boton-azul{
-    padding: 10px;
-    margin: 10px 5px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-   
-  }
-  
-
-  .form {
-
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 1.25rem;
-
- 
-  }
-
-  p{
-
-    grid-gap: 1.25rem;
-
-  }
-  
-  .Formulario{
-    
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 1.25rem;
-
-
-  }
-  
-
-
-  .boton-verde, .boton-amarillo, .boton-rojo, .boton-azul{
-    padding: 10px;
-    border: none; 
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: "Roboto", sans-serif;
-    text-transform: uppercase;
-    background: #4c9c4e;
-    color: #FFFFFF;
-  }
-
-  .boton-verde:hover {
-    background: #317435;
-  }
-  
-
-  .botones-container {
-      position: absolute;
-      left: 640px;
-      top: 340px;
-    
-  }
-  
-  table, th ,td, thead, tr {
-    text-align: center;
-    width: 300px; 
-  
-  }
-  
-
-  .Formulario {
-
-    margin-left: 0%;
-    margin-right: 13%;
-    padding-left: 0px;
-    grid-gap: 1.25rem;
-
-    border-radius: 0% 2% 2% 0%;
-
-
-    
-  }
-  
-  select, #fechaNacimiento{
-    width: 180px;
-    height: 26px;
-  }
-  
-  
-  #telefono{
-    width: 210px;
-    height: 26px;
-  }
-  
-  #lote1{
+    box-sizing: border-box;
+    height: 55px;
+}
+.modal-header h3 {
+	margin: 0;
+    box-sizing: border-box;
+    padding-left: 15px;
+    line-height: 50px;
+    color: #4d4d4d;
+    font-size: 16px;
     display: inline-block;
-  
-  
-  }
-  
-  a {
-    flex-direction: column;
-  }
-
-.imagen{
-position: absolute;
-margin-left: 800px;
-margin-top: -300px;
+    padding-bottom: 20px;
 }
-
-.btn_imagen{
-padding: 10px;
-    border: none;
-    border-radius: 5px;
+.modal-header label {
+	box-sizing: border-box;
+  
+    float: right;
+    line-height: 50px;
+    padding: 0 15px 0 15px;
     cursor: pointer;
-    font-family: "Roboto", sans-serif;
-    text-transform: uppercase;
-    background: #4c9c4e;
-    color: #FFFFFF;
+}
+.modal-header label:hover img {
+	opacity: 0.6;
+}
 
-    position: absolute;
-    margin-left: 840px;
+#modal{
+  display: none;
+}
+
+
+.form {
+
+
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  align-items: center;
+  margin: auto;
+
+ 
+}
+
+.form-group > #asunto, .form-group > #mensaje{
+  margin-left: auto;
+  width: 100%;
+}
+
+.Formulario {
+  position: absolute;
+  left: 70px;
 }
 
 
 
+/* MENU COLAPSIBLE */
 
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}

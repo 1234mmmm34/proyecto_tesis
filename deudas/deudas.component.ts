@@ -1,4 +1,4 @@
-import { Component, Injectable, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit,  Renderer2, ElementRef } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Router } from '@angular/router';
 import {  deudas, deuda } from "../modelos/deudas"
@@ -25,12 +25,15 @@ export class DeudasComponent {
   destinatario:string='';
   destinatario2:string='';
   especifico:boolean=false;
-
+  formulario: any;
   personas : Personas[]=[];
 
-  constructor(private http: HttpClient, private dataService: DataService, private fb: FormBuilder,private personaService:PersonasService){
 
 
+  constructor(private renderer: Renderer2 , private el: ElementRef, private http: HttpClient, private dataService: DataService, private fb: FormBuilder,private personaService:PersonasService){
+
+
+    
     this.UserGroup = this.fb.group({
          fraccionamiento: ['', Validators.required],
          monto: ['', Validators.required],
@@ -67,7 +70,35 @@ export class DeudasComponent {
       this.fetchDataDeudas(this.dataService.obtener_usuario(1));
       this.consultarPersonas(this.dataService.obtener_usuario(3));
       this.tipo_formulario=='ordinario';
+
+
     
+    }
+
+    
+    toggleCollapsible(event: Event): void {
+      const element = event.currentTarget as HTMLElement;
+      const content = element.nextElementSibling as HTMLElement; // Convertir a HTMLElement
+      this.renderer.addClass(element, 'active');
+      if (content.style.display === 'block') {
+        this.renderer.setStyle(content, 'display', 'none');
+        this.renderer.removeClass(element, 'active');
+      } else {
+        this.renderer.setStyle(content, 'display', 'block');
+      }
+    }
+
+
+    onChangeSelection(event: any) {
+
+      if(event.target.value == 'extraordinario'){
+        this.formulario = 'extraordinarias'
+        this.fetchDataDeudasExtra(this.dataService.obtener_usuario(1));
+      }
+      else{
+        this.formulario = 'ordinarias'
+        this.fetchDataDeudas(this.dataService.obtener_usuario(1));
+      }
     }
 
     consultarPersonas(idFraccionamiento: number): void {
@@ -94,12 +125,22 @@ export class DeudasComponent {
   
     }
 
+
+
     fetchDataDeudas(id_tesorero: any) {
       this.dataService.fetchDataDeudas(id_tesorero).subscribe((deudas: deudas[]) => {
-        //console.log(deudas);
+        console.log(deudas);
         this.deudas = deudas;
       });
-    } 
+    }
+
+    fetchDataDeudasExtra(id_tesorero: any) {
+      this.dataService.fetchDataDeudasExtra(id_tesorero).subscribe((deudas: deudas[]) => {
+        console.log(deudas);
+        this.deudas = deudas;
+      });
+    }
+
 
     edit(deudas: {
       id_deudas: any;
@@ -287,13 +328,6 @@ delete(id_deudas: any){
 
 
 
-fetchDataDeudasExtra(id_tesorero: any) {
-  this.dataService.fetchDataDeudasExtra(id_tesorero).subscribe((deudas: deudas[]) => {
-    console.log(deudas);
-    this.deudas = deudas;
-  });
-} 
-
 actualizar_deudaExtra(
   deudas: {monto: number, nombre: string, descripcion: string, proximo_pago: Date, id_deudas: number}
 ){
@@ -328,3 +362,7 @@ actualizar_deudaExtra(
 }
 
 }
+function toggleCollapsible(event: Event | undefined, Event: { new(type: string, eventInitDict?: EventInit | undefined): Event; prototype: Event; readonly NONE: 0; readonly CAPTURING_PHASE: 1; readonly AT_TARGET: 2; readonly BUBBLING_PHASE: 3; }) {
+  throw new Error('Function not implemented.');
+}
+

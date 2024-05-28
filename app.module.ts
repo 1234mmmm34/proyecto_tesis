@@ -61,6 +61,9 @@ import { DeudasComponent } from './deudas/deudas.component';
 import { TesoreroComponent } from './tesorero/tesorero.component';
 import { NoEncontradoDirective } from './no-encontrado/no-encontrado.directive';
 import { PaypalComponent } from './paypal/paypal.component';
+import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
+import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts'
 
 @NgModule({
   declarations: [
@@ -127,7 +130,10 @@ import { PaypalComponent } from './paypal/paypal.component';
     MatMenuModule,
     HttpClientModule,
     MatExpansionModule,
-    FormsModule
+    FormsModule,
+    CommonModule,
+    RouterOutlet,
+    CanvasJSAngularChartsModule
 
   ],
   providers: [],

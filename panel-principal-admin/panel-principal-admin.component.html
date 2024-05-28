@@ -60,6 +60,19 @@
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content> 
+
+      
+
+      <div *ngIf="esPanelAdmin()">
+
+        <body>
+          <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+          <div id="chartContainer1" style="height: 300px; width: 100%;"></div>
+          <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+        </body>
+
+      </div>
+
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>

@@ -2,3 +2,158 @@ h1{
    text-align: center;
    background-color: aqua;
 }
+
+
+#grid{
+
+   display: flex;
+
+}
+
+.columna {
+
+
+   padding-left: 2%;
+   padding-top: 30px;
+   margin-right: 2%;
+   height: 800px;
+   width: 50%;
+
+
+   
+ }
+
+ .cuadro{
+   border: 1px solid rgb(128, 125, 125); /* Añade bordes para visualizar las columnas */
+   box-shadow: 10px 10px 5px rgba(68, 68, 68, 0.5);
+   width: 240px;
+   margin-top: 10px;
+   height: 89px;
+   padding-left: 5px;
+   padding-top: 5px;
+ }
+
+ #cuentas_cobrar{
+  font-weight: bold;
+  color: crimson;
+  font-size: large;
+  margin-left: 5%;
+ }
+
+ #cuadro1{
+
+   border: 1px solid rgb(128, 125, 125); /* Añade bordes para visualizar las columnas */
+   box-shadow: 10px 10px 5px rgba(68, 68, 68, 0.5);
+   margin-top: 10px;
+   margin-bottom: 10px;
+   width: 100%;
+   height: 89px;
+   padding-left: 5px;
+   padding-top: 5px;
+
+ }
+
+ #div1{
+   padding-top: 40px;
+   padding-bottom: 40px;
+   padding-left: 13%;
+   padding-right: 5%;
+ }
+
+ #div2{
+
+   
+   margin-top: 20px;
+   padding-top: 40px;
+   padding-bottom: 40px;
+   padding-left: 13%;
+   padding-right: 5%;
+ }
+
+ #div1, #div2, #cdiv2, #cdiv3{
+   
+   border: 1px solid rgb(128, 125, 125); /* Añade bordes para visualizar las columnas */
+   box-shadow: 10px 10px 5px rgba(68, 68, 68, 0.5);
+ }
+
+ #cdiv1{
+   display: flex;
+   
+
+ }
+ 
+ #cdiv3{
+  width: 500px;
+}
+
+ #cdiv2{
+   margin-top: 10px;
+   padding-left: 10%;
+   padding-top: 25px;
+   padding-bottom: 15px;
+ }
+
+ #cdiv1c1{
+   flex: 1;
+ }
+ 
+ .columna1{
+   margin-top: 7px;
+   padding-top: 15px;
+   margin-left: 2%;
+   padding-left: 6%;
+   width: 35%;
+   height: 15%;
+
+ }
+
+
+
+ #header{
+  height: 50px;
+  border: 0;
+  padding-top: 20px;
+  padding-left: 50px;
+
+
+ }
+
+ #conexion{
+  display: inline-block;
+  border-radius: 50%;
+  width: 5px;
+  height: 13px;
+  margin-left: 50px;
+  margin-right: 20px;
+}
+
+#cdiv3{
+  margin-top: 20px;
+  margin-left: 50px;
+  width: 110%;
+}
+
+.button-rojo {
+  background-color: #f51717;
+  border-color: #f51717;
+
+}
+
+
+
+ hr{
+  height: 50px;
+  border: 0;
+  width: 120%;
+
+  box-shadow: 0 10px 10px -10px #a7a4a4;
+ }
+
+
+ 
+ .columna, .columna1, .columna2{
+   flex: 1;
+
+
+   
+ }

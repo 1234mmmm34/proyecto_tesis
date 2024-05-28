@@ -41,7 +41,9 @@ import { RecuperacionContraseniaComponent } from './recuperacion-contrasenia/rec
 import { DeudasComponent } from './deudas/deudas.component';
 import { TesoreroComponent } from './tesorero/tesorero.component'
 import {ConsultarUsuariosTesoreroComponent } from './consultar-usuarios-tesorero/consultar-usuarios-tesorero.component'
- 
+
+
+
 const routes: Routes = [
  // {path:'Home', component:HomeComponent},
   {path:'Acuerdos', component:AcuerdosComponent},

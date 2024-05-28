@@ -1,1 +1,102 @@
-<p>Hola</p>
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+
+</head>
+
+<body>
+    <div id="grid">
+
+        <div class="columna2">
+
+            <div id="header">
+                <h2 class="titulo">¡Hola de nuevo!, Mariana</h2>
+                <p id="descripcion">Te mostramos un resúmen del mes de mayo </p>
+            </div>
+            <hr>
+            <div style="display: inline-block; width: 500px;">
+                <button id="conexion" class="button-rojo"></button>
+                <p style="display: inline-block;"> sin conexión a panel de acceso</p>
+            </div>
+
+            <p style="padding-left: 50px; padding-top: 20px; font: 1em sans-serif; font-weight: bold;">Últimos accesos a la comunidad:</p>
+
+            <div id="cdiv3">
+
+                <table class="table" width="100%">
+                    <thead>
+                        <tr>
+    
+                            <th scope="col" width="50px" style=" font: 1em sans-serif;">#</th>
+                            <th scope="col">Fecha y hora</th>
+                            <th scope="col">Usuario</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr tr mat-row matRowDef="columns: displayedcolumns;" *ngFor="let entrada of entradas" height="40px">
+                            <td style=" font: 1em sans-serif;">{{entrada.id_entrada}}</td>
+                            <td>{{entrada.fecha}}</td>
+                            <td>{{entrada.nombre}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                
+            </div>
+        </div>
+
+
+
+
+        <div class="columna1">
+            <div id="cdiv1">
+                <div id="cdiv1c1">
+                    <div class="cuadro">
+                        <p>Proyección de ingresos para este mes (brutos)</p>
+                        <p style="width: 50px; margin-left: 160px;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polyline points="21.5 10 21.5 5 16.5 5" fill="none" stroke="#000" stroke-miterlimit="10"/><polyline points="21.5 5 13 13.5 9 9.5 2 16.5" fill="none" stroke="#000" stroke-miterlimit="10"/></svg></p>
+                    </div>
+                    <div class="cuadro">
+                        <p>Proyección de egresos para este mes (brutos)</p>
+                    </div>
+                </div>
+                <div id="cdiv1c2">
+                    <div class="cuadro">
+                        <p>Ingresos totales al día de hoy</p>
+                    </div>
+                    <div class="cuadro">
+                        <p>Egresos totales al día de hoy</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="cuadro1" *ngFor="let res of graficas;">
+                <p>Monto total en deudas por cobrar</p>
+                <p id="cuentas_cobrar">${{(res.cuentas_cobrar).toFixed(2) | number:'1.2-2'}} MXN</p>
+            </div>
+
+            <div id="cdiv2">
+                <canvasjs-chart [options]="chartOptions2" [styles]="{width: '85%', height:'480px'}"></canvasjs-chart>
+            </div>
+
+        </div>
+
+        <div class="columna">
+            <div id="div1">
+                <canvasjs-chart [options]="chartOptions" [styles]="{width: '90%', height:'320px'}"></canvasjs-chart>
+            </div>
+
+            <div id="div2">
+                <canvasjs-chart [options]="chartOptions1" [styles]="{width: '90%', height:'320px'}"></canvasjs-chart>
+            </div>
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>
