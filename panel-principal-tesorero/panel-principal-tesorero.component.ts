@@ -71,9 +71,10 @@ fillerNav=[
   ]}, 
   {name:"Deudores", route:"Deudores", icon:"report_problem"},
   {name:"Egresos", route:"Egresos", icon:"call_made"},
+  {name:"Ingresoss", route:"Ingresos", icon:"call_received"},
   {name:"Ingresos", route:"Egresos", icon:"call_received",children:[
     {name:"Ingresos Extraordinarios",route:"IngresosExtraordinarios", icon:"call_received"},
-  {name:"Ingresos Ordinarios",route:"IngresosOrdinarios", icon:"call_received"},
+    {name:"Ingresos Ordinarios",route:"IngresosOrdinarios", icon:"call_received"},
   ]},
   
   {name:'Proveedores',route:"Proveedores", icon:"store_mall_directory"},

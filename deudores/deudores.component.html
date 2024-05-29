@@ -1,13 +1,22 @@
 <body>
-    <div class="contenedor1">
-        <h2 class="titulo" >Deudores</h2>
-        <!-- <form>
-            <input type="text" style="position: absolute; top: 50px; left: 100px;" class="form-control" name="filtrar" placeholder="buscar" [(ngModel)]="filtroDeudores">
-        </form> -->
-        <div class="contenedor">
 
-            <div class="form" style="width: 2000px;">
-                <table id="example" class="table" cellspacing="0" width="100%" style="width: 2000px;">
+    <div>
+        <h2 class="titulo">Deudores</h2>
+        <p id="descripcion">Consulta deudores de pagos ordinarios y extraordinarios. </p>
+      </div>
+    
+      <hr>
+
+    <div class="contenedor">
+        <form id="buscar">
+            <input type="text" id="tbuscar" class="form-control" name="filtrar" placeholder="buscar">
+          </form>
+
+
+        <div class="contenedor2">
+
+
+                <table id="example" class="table" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -15,7 +24,7 @@
                             <th>Tipo de Deuda</th>
                             <th>Nombre de Deuda</th>
                             <th>Monto</th>
-                            <th>Próximo pago</th>
+                            <th>Fecha de ultimo pago</th>
                             <th>Retraso (dias)</th>
                             <!-- <th style="text-align:center;width:200px;">Quitar Acceso</th>
                             <th style="text-align:center;width:200px;">Conceder Acceso</th> -->
@@ -45,7 +54,6 @@
                 </table>
                 
             </div>
-        </div>
-    </div>
-</body>
 
+    </div>
+</body> 

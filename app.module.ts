@@ -63,7 +63,8 @@ import { NoEncontradoDirective } from './no-encontrado/no-encontrado.directive';
 import { PaypalComponent } from './paypal/paypal.component';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts'
+import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
+import { IngresosComponent } from './ingresos/ingresos.component'
 
 @NgModule({
   declarations: [
@@ -113,7 +114,8 @@ import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts'
     DeudasComponent,
     TesoreroComponent,
     NoEncontradoDirective,
-    PaypalComponent
+    PaypalComponent,
+    IngresosComponent
     
   ],
   imports: [

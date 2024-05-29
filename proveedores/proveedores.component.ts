@@ -50,7 +50,7 @@ export class ProveedoresComponent {
 
 
   cargarProveedores(idFraccionamiento: number): void {
-    this.ProveedoresService.consultarProveedores(idFraccionamiento).subscribe(
+    this.ProveedoresService.consultarProveedores(this.dataservice.obtener_usuario(3)).subscribe(
       (data: Proveedor[]) => {
         this.proveedores = data;
       },
@@ -163,7 +163,7 @@ export class ProveedoresComponent {
   cargarDatosProveedor(proveedorSeleccionado: Proveedor) {
    
     this.proveedorModel = {
-      idFraccionamiento: String(proveedorSeleccionado.id_fraccionamiento),
+      idFraccionamiento: String(this.dataservice.obtener_usuario(3)),
       nombre: proveedorSeleccionado.nombre,
       apellido_Paterno: proveedorSeleccionado.apellido_paterno,
       apellido_Materno: proveedorSeleccionado.apellido_materno,

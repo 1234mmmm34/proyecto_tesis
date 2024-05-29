@@ -22,7 +22,7 @@ export class EgresosComponent {
     concepto: '',
     descripcion: '',
     proveedor: '',
-    monto: 0,
+    monto: '',
     fecha: ''
   };
   //
@@ -57,7 +57,7 @@ export class EgresosComponent {
   agregarEgreso() {
     const { concepto, descripcion, proveedor, monto,fecha } = this.egresoModel;
   
-    this.egresoService.agregarEgreso(this.id_fraccionamiento, concepto, descripcion, proveedor, monto, fecha).subscribe(
+    this.egresoService.agregarEgreso(this.dataService.obtener_usuario(3), concepto, descripcion, proveedor, monto, fecha).subscribe(
       (result: boolean) => {
         if (result) {
           console.log('Egreso agregado correctamente');

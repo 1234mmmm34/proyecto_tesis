@@ -67,3 +67,12 @@ export interface deudores {
             por_novariables: any
             };
 
+            export interface historial {
+                id_deuda: any,
+                nombre_persona: any,
+                tipo_deuda: any,
+                nombre_deuda: any,
+                monto: any,
+                recargo: any,
+                estado: any
+                };

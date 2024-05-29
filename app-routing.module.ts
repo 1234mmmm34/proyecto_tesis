@@ -41,7 +41,7 @@ import { RecuperacionContraseniaComponent } from './recuperacion-contrasenia/rec
 import { DeudasComponent } from './deudas/deudas.component';
 import { TesoreroComponent } from './tesorero/tesorero.component'
 import {ConsultarUsuariosTesoreroComponent } from './consultar-usuarios-tesorero/consultar-usuarios-tesorero.component'
-
+import {IngresosComponent } from './ingresos/ingresos.component'
 
 
 const routes: Routes = [
@@ -109,6 +109,7 @@ children:[
 {path:'ConsultarDeudas',component:ConsultarDeudasComponent},
 {path:'Deudores', component:DeudoresComponent},
 {path:'Egresos', component:EgresosComponent},
+{path:'Ingresos', component:IngresosComponent},
 {path:'IngresosExtraordinarios', component:IngresosExtraordinariosComponent},
 {path:'IngresosOrdinarios', component:IngresosOrdinariosComponent},
 {path:'Proveedores', component:ProveedoresComponent},

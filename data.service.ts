@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, retry } from 'rxjs';
 import { fraccionamientos, controladores } from '../app/modelos/fraccionamientos';
 import { sesion, sesions, usuarios } from '../app/modelos/usuarios'
-import {  deudas, deuda, deudores, graficas, entradas } from "../app/modelos/deudas"
+import {  deudas, deuda, deudores, graficas, entradas, historial } from "../app/modelos/deudas"
 import { lotes } from '../app/modelos/propiedades';
 import { inquilinos } from '../app/modelos/inquilinos';
 import {formatDate } from '@angular/common';
@@ -61,6 +61,10 @@ export class DataService {
 
   fetchDataDeudas(id_tesorero: any): Observable<deudas[]> {
     return this.http.get<deudas[]>('https://localhost:44397/api/Deudas/Consultar_Deuda?id_tesorero='+id_tesorero);
+  }
+
+  fetchDataHistorialDeudas(id_fraccionamiento: any): Observable<historial[]> {
+    return this.http.get<historial[]>('https://localhost:44397/api/Deudas/Consultar_HistorialDeudas?id_fraccionamiento='+id_fraccionamiento);
   }
 
   fetchDataDeudasExtra(id_tesorero: any): Observable<deudas[]> {
