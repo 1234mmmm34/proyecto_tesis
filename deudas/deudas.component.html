@@ -63,7 +63,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr mat-row matRowDef="columns: displayedcolumns;" *ngFor="let deuda of deudas; let j=index"
+                <tr mat-row matRowDef="columns: displayedcolumns;" *ngFor="let deuda of deudas1; let j=index"
                     (click)="onRowClicked(deuda)">
                     <th scope="row">{{deuda.id_deudas}}</th>
                     <td>{{deuda.monto}}</td>
@@ -87,7 +87,10 @@
     </div>
 
 
-
+    <div class="pages">
+        <mat-paginator [length]="deudas.length" [pageSize]="verdaderoRango" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page" (page)="pageChanged($event)">
+        </mat-paginator>
+    </div>
 
 
 

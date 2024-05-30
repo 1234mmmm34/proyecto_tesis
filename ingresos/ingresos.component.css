@@ -6,6 +6,18 @@ body {
     background-position: center center;
   
   }
+
+  .imagen-cont{
+    border-color: #000000;
+    border-width: 3px 3px 3px 3px;
+    border-style: solid;
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    left: 500px;
+    top: 100px;
+
+  }
   
   #deuda-titulo{
     margin-left: 60px;
@@ -234,13 +246,25 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
-  
+  .boton-verde,
+.boton-amarillo,
+.boton-rojo,
+.boton-azul {
+  padding: 10px;
+  margin: 10px 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+
+
+}
   .pages {
     display: flex;
     justify-content: center;
     position: absolute;
-    top: 75%;
-    left: 40%;
+    top: 80%;
+    left: 50%;
   }
   
   #pageNumber {
@@ -268,7 +292,7 @@ body {
   
   
   .modal-background {
-      width: 100%;
+      width: 140%;
       height: 100%;
       background-color: rgba(0,0,0,0.5);
       position: fixed;
@@ -285,7 +309,7 @@ body {
       bottom: 0;
       margin: auto;
       display: none;	
-      width: 500px;
+      width: 900px;
       height: 550px;
       background-color: #fff;
       box-sizing: border-box;

@@ -42,8 +42,13 @@ export class IngresosComponent {
   monto:number=0;
   deudasDelUsuario : Deudores[]=[];
   deudasDelUsuarioExtra : Deudores[]=[];
-
-  historial: any;
+  res: number=0;
+  indice: number = 0;
+  verdaderoRango: number = 6;
+  cont: number = 1;
+  registrosTotales: number = 0;
+  historial1: historial[]=[];
+  historial: historial[]=[];
 
   constructor(private personasService:PersonasService,private deudaService:DeudaService, private renderer: Renderer2 , private el: ElementRef, private http: HttpClient, private dataService: DataService, private fb: FormBuilder,private personaService:PersonasService){
 
@@ -83,11 +88,102 @@ export class IngresosComponent {
     ngOnInit(): void {
 
       this.consultarHistorialDeudas(this.dataService.obtener_usuario(3));
+      this.consultarPersonas(this.dataService.obtener_usuario(3));
     //  this.tipo_formulario=='ordinario';
 
     }
 
+    paginador_atras() {
+
+      if (this.indice - this.verdaderoRango >= 0) {
+        this.historial1 = this.historial.slice(this.indice - this.verdaderoRango, this.indice);
+        this.indice = this.indice - this.verdaderoRango;
+        this.cont--;
+      }
+    }
+  
+    paginador_adelante() {
+      if (this.historial.length - (this.indice + this.verdaderoRango) > 0) {
+        this.indice = this.indice + this.verdaderoRango;
+        this.historial1 = this.historial.slice(this.indice, this.indice + this.verdaderoRango);
+        this.cont++;
+       // this.consultarNotificacion
+      } 
+      
+    }
     
+consultarPersonas(idFraccionamiento: number): void {
+  this.personasService.consultarPersonasPorFraccionamiento(idFraccionamiento).subscribe(
+    (personas: Personas[]) => {
+     this.personas = personas;
+      console.log('Personas:', personas);
+    },
+    (error) => {
+      // Manejo de errores
+      console.error('Error:', error);
+      Swal.fire({
+        title: 'Error al consultar a las personas',
+        text: 'Contacte con el administrador de la pagina',
+        icon: 'error',
+        confirmButtonText: 'Aceptar'
+      });
+    }
+  );
+}
+
+    
+onChangeUsuario(event: any) {
+  this.deudasDelUsuario = [];
+  // Aquí puedes agregar la lógica que deseas ejecutar cuando cambia la opción seleccionada
+  const valorSeleccionado = event.target.value;
+  const destinatarioId = parseInt(valorSeleccionado.split(' - ')[0]);
+  this.id_deudor=destinatarioId;
+  this.personasService.consultarDeudoresExtraoridinarios(this.dataService.obtener_usuario(3),destinatarioId).subscribe(
+    (deudasUsuario: Deudores[]) => {
+     this.deudasDelUsuario = deudasUsuario
+      console.log('deudas extraordinarias del usuario', deudasUsuario);
+      if(this.deudasDelUsuario.length!=0){
+        this.onChangeDeuda({ target: { selectedIndex: 0 } });
+      }else{
+        this.id_deuda=0;
+        this.monto = 0;
+        this.diasAtraso = 0;
+        this.total =0;
+        this.recargo=0;
+        this.fechaProximoPago='';
+        this.periodicidad=0;
+        Swal.fire({
+          title: 'El usuario seleccionado no tiene deudas extraordinarias vencidas',
+          text: '',
+          icon: 'warning',
+          confirmButtonText: 'Aceptar'
+        });
+      }
+     
+    },
+    (error) => {
+      // Manejo de errores
+      console.error('Error:', error);
+    }
+  );
+
+  this.monto=0;
+  this.periodicidad=0;
+  this.fecha_corte='';
+
+}
+
+
+    onChangeSelection(event: any) {
+
+      if(event.target.value == 'extraordinario'){
+        this.formulario = 'extraordinarios'
+      }
+      else{
+        this.formulario = 'ordinarios'
+      }
+    }
+
     toggleCollapsible(event: Event): void {
       const element = event.currentTarget as HTMLElement;
       const content = element.nextElementSibling as HTMLElement; // Convertir a HTMLElement
@@ -113,6 +209,7 @@ export class IngresosComponent {
       this.dataService.fetchDataHistorialDeudas(id_fraccionamiento).subscribe((historial: historial[]) => {
         console.log(historial);
         this.historial = historial;
+        this.historial1 = this.historial.slice(this.indice, this.indice + this.verdaderoRango);
       });
     }
 
@@ -257,55 +354,7 @@ delete(id_deudas: any){
 
 
   fechaCorte_extra:string='';
-  /*
-  agregar_deudaExtra(deudas: {monto: number, nombre: string, descripcion: string, dias_gracia:number, periodicidad: number, recargo: number, id_tesorero: number, id_fraccionamiento:number,proximo_pago:string,destinatario:string}){
 
-  deudas.dias_gracia=0;
-  deudas.periodicidad=0;
-  deudas.recargo=0;
-  deudas.proximo_pago=this.fechaCorte_extra;
-  deudas.id_fraccionamiento= this.dataService.obtener_usuario(3);
-  deudas.id_tesorero = this.dataService.obtener_usuario(1);
-  console.log(deudas.id_tesorero);
-  console.log(this.fechaCorte_extra);
-
-  const params = {
-    id_deudas: 0,
-    id_fraccionamiento: deudas.id_fraccionamiento,
-    id_tesorero: this.dataService.obtener_usuario(1),
-    monto: deudas.monto,
-    nombre: deudas.nombre,
-    descripcion: deudas.descripcion,
-    proximo_pago: deudas.proximo_pago,
-    proximo_pago1: "s",
-    destinatario: this.destinatario,
-    dias_gracia: 0,
-    periodicidad: 0,
-    recargo: 0
-  }
-
-  console.log("PARAMS", params)
-
-  const headers = new HttpHeaders({'myHeader': 'procademy'});
-  this.http.post(
-   "https://localhost:44397/api/Deudas/Agregar_DeudaExtra",
-    params, {headers: headers})
-    .subscribe((res) => { 
-      Swal.fire({
-        title: 'Deuda agregada correctamente',
-        text: '',
-        icon: 'success',
-        confirmButtonText: 'Aceptar'
-      });
-      console.log(res);
-    //  this.ngOnInit(); 
-    this.fetchDataDeudasExtra(this.dataService.obtener_usuario(1));
-    this.UserGroup.reset();
-    });
- 
-}
-
-*/
 
 actualizar_deudaExtra(
   deudas: {monto: number, nombre: string, descripcion: string, proximo_pago: Date, id_deudas: number}
@@ -345,6 +394,7 @@ onChangeDeuda(event: any) {
   const selectedIndex = event.target.selectedIndex;
   const deudaSeleccionada = this.deudasDelUsuario[selectedIndex];
   this.id_deuda=deudaSeleccionada.id_deuda;
+  console.log(this.res)
 
   this.monto = deudaSeleccionada.monto;
   this.fecha_corte = formatDate(deudaSeleccionada.proximo_pago, 'yyyy-MM-dd', 'en-US');
@@ -371,9 +421,10 @@ onChangeDeuda(event: any) {
     this.total += deudaSeleccionada.recargo ; // Agregar el valor de lote al recargo
   
   }
- 
 
 }
+
+
 
 pagarDeudaExtraordinaria(montoDeudaExtra: any) {
   const idDeudor = this.id_deudor // Reemplaza con el ID del deudor correspondiente
@@ -404,9 +455,9 @@ pagarDeudaExtraordinaria(montoDeudaExtra: any) {
             confirmButtonText: 'Aceptar'
           });
           console.log('La deuda ha sido pagada exitosamente');
-          this.onChangeDeuda({ target: { selectedIndex: 0 } });
+         // this.onChangeDeuda({ target: { selectedIndex: 0 } });
           this.onChangeUsuario({ target: { selectedIndex: 0 } });
-          location.reload;
+          this.consultarHistorialDeudas(this.dataService.obtener_usuario(3));
         } else {
           console.log('Hubo un problema al pagar la deuda');
           Swal.fire({
@@ -438,46 +489,6 @@ pagarDeudaExtraordinaria(montoDeudaExtra: any) {
 }
 
 
-onChangeUsuario(event: any) {
-  this.deudasDelUsuario = [];
-  // Aquí puedes agregar la lógica que deseas ejecutar cuando cambia la opción seleccionada
-  const valorSeleccionado = event.target.value;
-  const destinatarioId = parseInt(valorSeleccionado.split(' - ')[0]);
-  this.id_deudor=destinatarioId;
-  this.personasService.consultarDeudoresExtraoridinarios(this.dataService.obtener_usuario(3),destinatarioId).subscribe(
-    (deudasUsuario: Deudores[]) => {
-     this.deudasDelUsuario = deudasUsuario
-      console.log('deudas extraordinarias del usuario', deudasUsuario);
-      if(this.deudasDelUsuario.length!=0){
-        this.onChangeDeuda({ target: { selectedIndex: 0 } });
-      }else{
-        this.id_deuda=0;
-        this.monto = 0;
-        this.diasAtraso = 0;
-        this.total =0;
-        this.recargo=0;
-        this.fechaProximoPago='';
-        this.periodicidad=0;
-        Swal.fire({
-          title: 'El usuario seleccionado no tiene deudas extraordinarias vencidas',
-          text: '',
-          icon: 'warning',
-          confirmButtonText: 'Aceptar'
-        });
-      }
-     
-    },
-    (error) => {
-      // Manejo de errores
-      console.error('Error:', error);
-    }
-  );
-
-  this.monto=0;
-  this.periodicidad=0;
-  this.fecha_corte='';
-
-}
 
 imagenSeleccionada: any; // Variable para mostrar la imagen seleccionada en la interfaz
   archivoSeleccionado: File | null = null;

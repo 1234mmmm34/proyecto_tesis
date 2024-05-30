@@ -64,7 +64,8 @@ import { PaypalComponent } from './paypal/paypal.component';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
-import { IngresosComponent } from './ingresos/ingresos.component'
+import { IngresosComponent } from './ingresos/ingresos.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -135,7 +136,8 @@ import { IngresosComponent } from './ingresos/ingresos.component'
     FormsModule,
     CommonModule,
     RouterOutlet,
-    CanvasJSAngularChartsModule
+    CanvasJSAngularChartsModule,
+    MatPaginatorModule
 
   ],
   providers: [],

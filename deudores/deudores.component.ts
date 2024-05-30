@@ -9,6 +9,8 @@ import { DatePipe } from '@angular/common'
 import { PersonasService } from '../ingresos-extraordinarios/personas.service';
 import { Deudores } from '../ingresos-extraordinarios/deudores.model';
 import Swal from 'sweetalert2';
+//import {MatPaginatorModule} from '@angular/material/paginator';
+
 
 @Component({
   selector: 'app-deudores',
@@ -18,18 +20,39 @@ import Swal from 'sweetalert2';
 export class DeudoresComponent {
   httpclient: any;
   deudores: deudores[] = [];
+ 
   deudor =new deudor();
   filtroDeudores:'' | undefined;
 
   Deudores_totales:Deudores[]=[];
+  Deudores1: Deudores[] = [];
 
+  indice: number = 0;
+  verdaderoRango: number = 6;
+  cont: number = 1;
+
+  itemsPerPageLabel = 'Elementos por página'; 
 
   ngOnInit(){
     //this.fetchDataDeudores();
     this.ConsultarDeudores();
   }
 
+
   constructor(private http: HttpClient, private dataService: DataService, private fb: FormBuilder,private personasService:PersonasService){}
+
+
+  pageChanged(event: any) {
+    // Determinar la acción del paginator
+    if (event.previousPageIndex < event.pageIndex) {
+      // Se avanzó a la siguiente página
+      this.paginador_adelante();
+    } else if (event.previousPageIndex > event.pageIndex) {
+      // Se retrocedió a la página anterior
+      this.paginador_atras();
+    }
+  }
+
 
   // fetchDataDeudores() {
   //   this.dataService.fetchDataDeudores(this.dataService.obtener_usuario(3)).subscribe((deudores: deudores[]) => {
@@ -38,10 +61,34 @@ export class DeudoresComponent {
   //   });
   // } 
 
+  
+  paginador_atras() {
+
+    if (this.indice - this.verdaderoRango >= 0) {
+      
+      this.Deudores1 = this.Deudores_totales.slice(this.indice - this.verdaderoRango, this.indice);
+      this.indice = this.indice - this.verdaderoRango;
+      this.cont--;
+    }
+  }
+
+  paginador_adelante() {
+    if (this.Deudores_totales.length - (this.indice + this.verdaderoRango) > 0) {
+      this.indice = this.indice + this.verdaderoRango;
+      this.Deudores1 = this.Deudores_totales.slice(this.indice, this.indice + this.verdaderoRango);
+      this.cont++;
+     // this.consultarNotificacion
+    } 
+    
+  }
+
   ConsultarDeudores(){
     this.personasService.consultarDeudoresOrdinarios(this.dataService.obtener_usuario(3)).subscribe(
       (deudasUsuario: Deudores[]) => {
        this.Deudores_totales = deudasUsuario
+       this.indice=0;
+       this.verdaderoRango=6;
+       this.Deudores1 = this.Deudores_totales.slice(this.indice, this.indice + this.verdaderoRango);
         console.log('deudas de todos los  usuarios', this.Deudores_totales);
         if(this.Deudores_totales.length!=0){
 

@@ -169,12 +169,16 @@ table {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
+mat-paginator{
+  background-color: transparent;
+}
+
 .pages {
   display: flex;
   justify-content: center;
   position: absolute;
-  top: 85%;
-  left: 50%;
+  top: 68%;
+  left: 40%;
 }
 
 

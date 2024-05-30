@@ -89,7 +89,7 @@ export class ConsultarNotificacionesComponent {
         this.notificaciones1 = this.notificaciones.slice(this.indice, this.indice + this.verdaderoRango);
 
       });
-  }
+  } 
 
 
 
