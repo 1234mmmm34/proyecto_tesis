@@ -146,6 +146,9 @@ export class DataService {
       else if(op==9){
         return data.conexion;
       }
+      else if(op==10){
+        return data.con_nombre;
+      }
       /*
     else if(op==8){
       return data.nombre;

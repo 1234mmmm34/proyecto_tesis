@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { DataService } from '../data.service';
 import { HttpClient } from '@angular/common/http';
-
+//import { saveAs } from 'file-saver';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 import { graficas, entradas } from '../modelos/deudas';
 import { Observable } from 'rxjs';
@@ -16,6 +16,8 @@ import { Observable } from 'rxjs';
 export class HomeComponent {
   ngZone: any;
 
+  showHelp: boolean = false;
+
   constructor(private http: HttpClient, private dataService: DataService){}
 
   httpclient: any;
@@ -27,38 +29,92 @@ export class HomeComponent {
   graficas1: any;
   graficas2: any;
   rutasvg: string = './ingreso.svg';
+  cuenta_cobrar: any;
+  ingresos: any;
+  nombre: any;
+  mes: any;
+  conexion: any;
 
- 
-  async ngOnInit(){
+  meses = [
+    "enero", "febrero", "marzo", "abril", "mayo", "junio",
+    "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+  ];
 
-    this.fetchCuentasPorCobrar();
+  async ngOnInit(){ 
+
+
+   // this.fetchCuentasPorCobrar();
+   this.nombre = this.dataService.obtener_usuario(8)
+   this.cuenta_cobrar = this.dataService.obtener_graficas(1) 
+   this.ingresos = this.dataService.obtener_graficas(4)+ this.dataService.obtener_graficas(5)
+   console.log("cue: ",this.cuenta_cobrar)
     this.fetchEntradas();
-    
-    
+
+    const fecha_actual = new Date();
+    this.mes = fecha_actual.getMonth(); 
+
+    this.cambiarColorBoton();
+
+
   }
 
+  cambiarColorBoton(): void {
+    const boton = document.getElementById("conexion");
+    if (boton) {
+      //const numeroAleatorio = Math.random();
+      if (this.dataService.obtener_usuario(9) == false) {
+        boton.classList.add("button-rojo");
+        boton.classList.remove("button-verde");
+        this.conexion = "sin conexion"
+      } else {
+        boton.classList.add("button-verde");
+        boton.classList.remove("button-rojo");
+        this.conexion = "conectado"
 
+      }
+    } else {
+      console.error("El botón con el id 'conexion' no se encontró en el DOM.");
+    }
+  }
+
+/*
 fetchCuentasPorCobrar() {
 
     this.dataService.consultarDeudasPorCobrar().subscribe((graficas: graficas[]) => {
       console.log(graficas);
       this.graficas = graficas
-      
-    });
 
-  } 
+    });
+ 
+
+ 
+
+  }
+  */
 
   fetchEntradas() {
 
     this.dataService.consultarEntradas().subscribe((entradas: entradas[]) => {
       console.log(entradas);
       this.entradas = entradas
-      
+
     });
 
-  } 
+  }
 
 
+
+
+/*
+  reporte_entradas() {
+    this.dataService.getPDF().subscribe(
+      (response: any) => {
+        const blob = new Blob([response], { type: 'application/pdf' });
+        saveAs(blob, 'reporte_entradas.pdf'); // Cambia 'filename.pdf' por el nombre deseado para el archivo
+      }
+    );
+  }
+  */
 
   // Llama a la función obtenerGrafica0() donde necesites obtener la primera gráfica.
 
@@ -151,7 +207,7 @@ fetchCuentasPorCobrar() {
     }]
   }
 
-  
+
   chartOptions1 = {
     animationEnabled: true,
     exportEnabled: true,
@@ -189,42 +245,42 @@ fetchCuentasPorCobrar() {
       name: "Este mes",
       xValueFormatString: "MMM DD, YYYY",
       dataPoints: [
-        { x: new Date(2024, 5, 1), y: 63 },
-        { x: new Date(2024, 5, 2), y: 69 },
-        { x: new Date(2024, 5, 3), y: 65 },
-        { x: new Date(2024, 5, 4), y: 70 },
-        { x: new Date(2024, 5, 5), y: 71 },
-        { x: new Date(2024, 5, 6), y: 65 },
-        { x: new Date(2024, 5, 7), y: 73 },
-        { x: new Date(2024, 5, 8), y: 86 },
-        { x: new Date(2024, 5, 9), y: 74 },
-        { x: new Date(2024, 5, 10), y: 75 },
-        { x: new Date(2024, 5, 11), y: 76 },
-        { x: new Date(2024, 5, 12), y: 84 },
-        { x: new Date(2024, 5, 13), y: 87 },
-        { x: new Date(2024, 5, 14), y: 76 },
-        { x: new Date(2024, 5, 15), y: 79 }
+        { x: new Date(2024, 4, 1), y: 63 },
+        { x: new Date(2024, 4, 2), y: 59 },
+        { x: new Date(2024, 4, 3), y: 65 },
+        { x: new Date(2024, 4, 4), y: 70 },
+        { x: new Date(2024, 4, 5), y: 71 },
+        { x: new Date(2024, 4, 6), y: 65 },
+        { x: new Date(2024, 4, 7), y: 73 },
+        { x: new Date(2024, 4, 8), y: 86 },
+        { x: new Date(2024, 4, 9), y: 74 },
+        { x: new Date(2024, 4, 10), y: 75 },
+        { x: new Date(2024, 4, 11), y: 76 },
+        { x: new Date(2024, 4, 12), y: 94 },
+        { x: new Date(2024, 4, 13), y: 87 },
+        { x: new Date(2024, 4, 14), y: 76 },
+        { x: new Date(2024, 4, 15), y: 79 }
       ]
     }, {
       type: "line",
       showInLegend: true,
       name: "Mes pasado",
       dataPoints: [
-        { x: new Date(2024, 5, 1), y: 60 },
-        { x: new Date(2024, 5, 2), y: 57 },
-        { x: new Date(2024, 5, 3), y: 51 },
-        { x: new Date(2024, 5, 4), y: 56 },
-        { x: new Date(2024, 5, 5), y: 54 },
-        { x: new Date(2024, 5, 6), y: 55 },
-        { x: new Date(2024, 5, 7), y: 54 },
-        { x: new Date(2024, 5, 8), y: 69 },
-        { x: new Date(2024, 5, 9), y: 65 },
-        { x: new Date(2024, 5, 10), y: 66 },
-        { x: new Date(2024, 5, 11), y: 63 },
-        { x: new Date(2024, 5, 12), y: 67 },
-        { x: new Date(2024, 5, 13), y: 66 },
-        { x: new Date(2024, 5, 14), y: 56 },
-        { x: new Date(2024, 5, 15), y: 64 }
+        { x: new Date(2024, 4, 1), y: 60 },
+        { x: new Date(2024, 4, 2), y: 57 },
+        { x: new Date(2024, 4, 3), y: 51 },
+        { x: new Date(2024, 4, 4), y: 56 },
+        { x: new Date(2024, 4, 5), y: 54 },
+        { x: new Date(2024, 4, 6), y: 55 },
+        { x: new Date(2024, 4, 7), y: 54 },
+        { x: new Date(2024, 4, 8), y: 69 },
+        { x: new Date(2024, 4, 9), y: 65 },
+        { x: new Date(2024, 4, 10), y: 66 },
+        { x: new Date(2024, 4, 11), y: 63 },
+        { x: new Date(2024, 4, 12), y: 67 },
+        { x: new Date(2024, 4, 13), y: 66 },
+        { x: new Date(2024, 4, 14), y: 56 },
+        { x: new Date(2024, 4, 15), y: 64 }
       ]
     }]
   }
@@ -232,14 +288,14 @@ fetchCuentasPorCobrar() {
 
 
   chartOptions2 = {
-   
+
 		animationEnabled: true,
 		exportEnabled: true,
 		title:{
-			text: "Comparativa de ingresos y egresos (mensual)",
+			text: "Comparativa de ingresos y egresos",
       fontColor: "black",
       fontSize: 20,
-      fontFamily: "tahoma"   
+      fontFamily: "tahoma"
 		},
     /*
     axisX:{
@@ -255,20 +311,20 @@ fetchCuentasPorCobrar() {
 		legend: {
 			horizontalAlign: "right",
 			verticalAlign: "center",
-			reversed: true        
+			reversed: true
 		},
 		data: [{
-      
+
 			type: "stackedColumn100",
 			name: "Fijos",
 			showInLegend: "true",
 			indexLabel: "#percent %",
-			indexLabelPlacement: "inside",
+			indexLabelPlacement: "inside", 
 			indexLabelFontColor: "white",
       color: "#25A0BE",
 			dataPoints: [
-				{  y: this.dataService.obtener_graficas(4) , label: "Ingresos ($)" },
-				{  y: 15, label: "Egresos"}
+				{  y: this.dataService.obtener_graficas(4) , label: "Ingresos ($ MXN)" },
+				{  y: 1000, label: "Egresos ($ MXN)"}
 			]
 		}, {
 			type: "stackedColumn100",
@@ -279,16 +335,16 @@ fetchCuentasPorCobrar() {
 			indexLabelFontColor: "white",
       color: "#8A5A9E",
 			dataPoints: [
-				{  y: this.dataService.obtener_graficas(5), label: "Ingresos ($)" },
-				{  y: 25, label: "Egresos"}
+				{  y: this.dataService.obtener_graficas(5), label: "Ingresos ($ MXN)" },
+				{  y: 3000, label: "Egresos ($ MXN)"}
 			]
 		}]
-	}	
-
-
-
 
   
+	}
+
+
+
+
 
 }
-
