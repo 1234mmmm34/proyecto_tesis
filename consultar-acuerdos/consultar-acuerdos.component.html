@@ -17,31 +17,31 @@
     <div class="contenedor1">
         <div id="buscar">
 
-
+ 
             <input type="text" name="filtrar" placeholder="buscar" [(ngModel)]="filtroAcuerdos">
-            <input type="date" name="filtrarFecha" [(ngModel)]="filtroFecha" id="buscar1">
+            <input type="date" name="filtrarFecha" [(ngModel)]="filtroFecha" id="buscar1" (ngModelChange)="onFechaSeleccionada()">
             <label for="modal" class="boton">Agregar</label>
 
         </div>
-
-        <div class="contenedor2">
+ 
+        <div class="contenedor2" *ngIf="this.acuerdos1.length>0; else noencontrado">
 
             <table class="table" width="100%">
                 <thead>
                     <tr>
 
-                        <th scope="col" width="300px" style=" font: 1em sans-serif;">Asunto</th>
+                        <th scope="col" class="asunto" style=" font: 1em sans-serif;">Asunto</th>
                         <th scope="col">Detalles</th>
                         <th scope="col">Fecha</th>
                         <th scope="col" style="text-align:center;width:200px;">
                             Acciones
                         </th>
-                    </tr>
+                    </tr> 
                 </thead>
                 <tbody>
                     <tr tr mat-row matRowDef="columns: displayedcolumns;"
                         *ngFor="let acuerdo of acuerdos1 | filtroAcuerdos: 'asunto': filtroAcuerdos | filtroFecha: 'fecha': filtroFecha">
-                        <td>{{ acuerdo.asunto }}</td>
+                        <td class="asunto">{{ acuerdo.asunto }}</td>
                         <td>{{ acuerdo.detalles }}</td>
                         <td>{{ acuerdo.fecha }}</td>
                         <td id="td-view">
@@ -55,21 +55,21 @@
                 </tbody>
             </table>
 
-
+    
         </div>
- 
 
         <div class="pages">
-
-            <p>Filas por página</p> <input type="number" id="pageNumber" class="page">
-
-            <button class="boton-verde" (click)="paginador_atras()">&lt;</button>
-            <p style="padding-top: 20px; "> {{cont}} - 5 </p>
-            <button class="boton-verde" (click)="paginador_adelante()">&gt;</button>
-
-        <!--    <a href="https://www.paypal.com/ncp/payment/R78AZGSW44VFU" target="_blank">Pagar con PayPal</a>  -->
-
+            <mat-paginator [length]="acuerdos.length" [pageSize]="verdaderoRango" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page" (page)="pageChanged($event)">
+            </mat-paginator>
         </div>
+    
+    
+        
+        <ng-template #noencontrado>
+            <div class="div-noen">
+                <img class="noencontrado" src="./no-en1.jpg">
+            </div>
+        </ng-template> 
 
 
 
@@ -98,7 +98,7 @@
             </div>
 
 
-            <div class="form"> 
+            <div class="form">
 
                 <!-- Formulario para agregar un nuevo acuerdo -->
                 <form id="formCrear" class="Formulario" #form="ngForm" (ngSubmit)="agregarAcuerdo(form.value)">
@@ -146,51 +146,3 @@
 
 
 
-
-
-
-
-<!--
-<div *ngIf="!acuerdos || acuerdos.length === 0">
-    
-    <div appNoEncontrado></div>
-   
-    
-</div>
-
- 
- <body *ngIf="acuerdos && acuerdos.length > 0" class="contenedor1">
-        <form id="buscar">
-            <input type="text" name="filtrar" placeholder="buscar" [(ngModel)]="filtroAcuerdos">
-            <input type="date" name="filtrarFecha" [(ngModel)]="filtroFecha" id="buscar1">
-        </form>
-
-        <div class="contenedor2">
-            <table id="example" class="table" cellspacing="20" width="100%">
-                <thead>
-                    <tr>
-                        <th scope="col">Asunto</th>
-                        <th scope="col">Detalles</th>
-                        <th scope="col">Fecha</th>
-                        <th scope="col">Borrar acuerdo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr
-                        *ngFor="let acuerdo of acuerdos | filtroAcuerdos: 'asunto': filtroAcuerdos | filtroFecha: 'fecha': filtroFecha">
-                        <td>{{ acuerdo.asunto }}</td>
-                        <td>{{ acuerdo.detalles }}</td>
-                        <td>{{ acuerdo.fecha }}</td>
-                        <td>
-                            <a class="btn btn-sm text-white btn-danger" style="margin-left:16px;"
-                                (click)="eliminarAcuerdo(acuerdo.id_acuerdo,acuerdo.id_fraccionamiento)">
-                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                            </a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </body>
-
--->

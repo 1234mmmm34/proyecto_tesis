@@ -8,9 +8,8 @@ import Swal from 'sweetalert2'
 import { v4 as uuidv4 } from 'uuid';
 import { InvitacionService } from './invitacion.service';
 import { CorreoService } from './correo.service';
-import { Usuario } from '../invitacion/usuario.model';
 
- 
+
 @Component({
   selector: 'app-agregar-usuario',
   templateUrl: './agregar-usuario.component.html',
@@ -25,11 +24,11 @@ export class AgregarUsuarioComponent {
   tipo_usuario: any;
   filtroUsuarios: "" | undefined;
   id_usuario: any;
+  tesorero: any;
 
-indice: number = 0; 
+  indice: number = 0; 
 verdaderoRango: number = 6;
 cont: number = 1;
-usuarios1: usuarios[] = [];
 
   ngOnInit(): void {
 
@@ -53,7 +52,7 @@ usuarios1: usuarios[] = [];
     });
 
 
-  
+
   }
 
   fetchDataUsers(id_administrador: any) {
@@ -64,24 +63,6 @@ usuarios1: usuarios[] = [];
     });
   }
 
-
-  paginador_atras() {
-
-    if (this.indice - this.verdaderoRango >= 0) {
-      this.usuarios1 = this.usuarios.slice(this.indice - this.verdaderoRango, this.indice);
-      this.indice = this.indice - this.verdaderoRango;
-      this.cont--;
-    }
-  }
-
-  paginador_adelante() {
-    if (this.usuarios.length - (this.indice + this.verdaderoRango) > 0) {
-      this.indice = this.indice + this.verdaderoRango;
-      this.usuarios1 = this.usuarios.slice(this.indice, this.indice + this.verdaderoRango);
-      this.cont++;
-     // this.consultarNotificacion
-    } 
-  }
 
   correo_invitado: string = '';
   correo_invitado1: string = '';
@@ -100,17 +81,17 @@ usuarios1: usuarios[] = [];
   mandar_correo(correo_invitado: string) {
 
 
-    console.log("generarinvitacion");
+    console.log(correo_invitado);
     const token = uuidv4();
     console.log(token, correo_invitado, this.dataService.obtener_usuario(1), this.dataService.obtener_usuario(5), this.dataService.obtener_usuario(2), "usuario")
 
     var correo = correo_invitado;
-    this.invitacionService.generarInvitacion(token, "urquidymariana@gmail.com", this.dataService.obtener_usuario(1), this.dataService.obtener_usuario(5), this.dataService.obtener_usuario(2), "usuario")
+    this.invitacionService.generarInvitacion(token, correo_invitado, this.dataService.obtener_usuario(1), this.dataService.obtener_usuario(5), this.dataService.obtener_usuario(2), "usuario")
       .subscribe(
         response => {
           console.log('Success:', response);
-          this.correoService.Enviar_Correo("urquidymariana@gmail.com", "haz sido invitado por tu administrador para unirte a una comunidad en linea\n por favor termina tu registro en el siguiente link: \n http://localhost:4200/Invitacion?token=" + token);
-          // this.enviarCorreo(correoElectronico, "haz sido invitado por tu administrador para unirte a una comunidad en linea\n por favor termina tu registro en el siguiente link: \n http://localhost:4200/Invitacion?token=" + token);
+          this.correoService.Enviar_Correo(correo_invitado, "haz sido invitado por tu administrador para unirte a una comunidad en linea\n por favor termina tu registro en el siguiente link: \n https://localhost:44397:4200/Invitacion?token=" + token);
+          // this.enviarCorreo(correoElectronico, "haz sido invitado por tu administrador para unirte a una comunidad en linea\n por favor termina tu registro en el siguiente link: \n https://localhost:44397:4200/Invitacion?token=" + token);
           Swal.fire({
             title: 'Invitacion enviada correctamente',
             text: '',
@@ -156,7 +137,7 @@ usuarios1: usuarios[] = [];
         telefono: usuario.telefono,
         fecha_nacimiento: usuario.fecha_nacimiento,
         correo: "N/A",
-        contrasenia: usuario.contrasenia,
+        contrasenia: "123",
         id_fraccionamiento: this.dataService.obtener_usuario(1),
         id_administrador: this.dataService.obtener_usuario(1),
         id_lote: 1,
@@ -174,10 +155,15 @@ usuarios1: usuarios[] = [];
         params, { headers: headers })
         .subscribe((res) => {
           console.log(res);
-          console.log(this.usuarios[0].fecha_nacimiento); 
+          console.log(this.usuarios[0].fecha_nacimiento);
           this.fetchDataUsers(this.dataService.obtener_usuario(1));
 
-
+          Swal.fire({
+            title: 'Usuario agregado',
+            text: '',
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+          })
         });
     }
     else {
@@ -191,7 +177,7 @@ usuarios1: usuarios[] = [];
 
 
   disable(usuario: any) {
-    
+
     this.id_fracc = this.id_usuario;
 
     return this.http.get("https://localhost:44397/api/Usuario_lote/RestrictedUser?id_usuario=" + this.id_fracc).subscribe(
@@ -227,10 +213,11 @@ usuarios1: usuarios[] = [];
 
 
   delete(usuario: any) {
-    
-    this.id_fracc = this.id_usuario;
 
-    return this.http.delete("https://localhost:44397/api/Usuario_lote/Eliminar_inquilino?id_usuario=" + this.id_fracc).subscribe(
+    this.id_fracc = this.id_usuario;
+    console.log(this.id_usuario);
+
+    return this.http.delete("https://localhost:44397/api/Usuario_lote/Eliminar_inquilino?id_persona=" + this.id_fracc).subscribe(
       () => {
 
         Swal.fire({
@@ -260,13 +247,13 @@ usuarios1: usuarios[] = [];
 
 
   }
- 
+
 
   enable(usuario: any) {
 
     this.id_fracc = this.id_usuario;
 
-    
+
     return this.http.get("https://localhost:44397/api/Usuario_lote/EnableUser?id_usuario=" + this.id_fracc).subscribe(
       () => {
         Swal.fire({
@@ -321,8 +308,77 @@ usuarios1: usuarios[] = [];
 
 
 
+actualizar_tesorero(){
+
+  this.id_fracc = this.id_usuario;
+  this.tesorero='tesorero';
 
 
+  return this.http.put("https://localhost:44397/api/Personas/Actualizar_TipoUsuario?tipo_usuario="+this.tesorero+"&id_persona=" + this.id_fracc,this.id_fracc).subscribe(
+    () => {
+      Swal.fire({
+        title: 'Tesorero',
+        text: '',
+        icon: 'success',
+        confirmButtonText: 'Aceptar'
+      })
+      this.fetchDataUsers(this.dataService.obtener_usuario(1));
+      window.location.reload();
+
+    },
+    (error) => {
+      console.error('Error al agregar notificación Angular:', error);
+      Swal.fire({
+        title: 'Por favor, complete todos los campos',
+        text: '',
+        icon: 'error',
+        confirmButtonText: 'Aceptar'
+      })
+      this.fetchDataUsers(this.dataService.obtener_usuario(1));
+      console.log("hola");
+      this.UserGroup.reset();
+
+
+
+    })
+
+
+}
+
+
+  
+pageChanged(event: any) {
+  // Determinar la acción del paginator
+  if (event.previousPageIndex < event.pageIndex) {
+    // Se avanzó a la siguiente página
+    this.paginador_adelante();
+  } else if (event.previousPageIndex > event.pageIndex) {
+    // Se retrocedió a la página anterior
+    this.paginador_atras();
+  }
+}
+
+
+
+
+paginador_atras() {
+
+  if (this.indice - this.verdaderoRango >= 0) {
+    this.usuarios = this.usuarios.slice(this.indice - this.verdaderoRango, this.indice);
+    this.indice = this.indice - this.verdaderoRango;
+    this.cont--;
+  }
+}
+
+paginador_adelante() {
+  if (this.usuarios.length - (this.indice + this.verdaderoRango) > 0) {
+    this.indice = this.indice + this.verdaderoRango;
+    this.usuarios = this.usuarios.slice(this.indice, this.indice + this.verdaderoRango);
+    this.cont++;
+   // this.consultarNotificacion
+  } 
+  
+}
 
 
 

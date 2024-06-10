@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NotificacionesService } from '../notificaciones/notificaciones.service';
-import { Notificaciones } from '../notificaciones/notificaciones.model';
+import { NotificacionesService } from '../consultar-notificaciones/notificaciones.service';
+import { Notificaciones } from '../modelos/notificaciones';
 import { DataService } from '../data.service';
 
 @Component({

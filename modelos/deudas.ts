@@ -64,7 +64,10 @@ export interface deudores {
             variables: any,
             novariables: any,
             por_variables: any,
-            por_novariables: any
+            por_novariables: any,
+            proyeccion_ingresos: any;
+            mes: any;
+            egresos: any;
             };
 
             export interface historial {

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Acuerdos } from '../acuerdos/acuerdos.model';
-import { AcuerdosService } from '../acuerdos/acuerdos.service';
+import { Acuerdos } from '../modelos/acuerdos';
+import { AcuerdosService } from '../consultar-acuerdos/acuerdos.service';
 import { DataService } from '../data.service';
 @Component({
   selector: 'app-acuerdos-usuarios',

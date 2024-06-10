@@ -36,4 +36,10 @@ export class AcuerdosService {
     
     return this.http.get<Acuerdos[]>(`${this.apiUrl}/Consultar_Acuerdos_Paginados?id_fraccionamiento=${id_fraccionamiento}&indice=${indice}&rango=${rango}`);
   }
+
+
+  consultarAcuerdosFecha(id_fraccionamiento: number, indice: number, rango: number, fecha: any): Observable<Acuerdos[]> {
+    
+    return this.http.get<Acuerdos[]>(`${this.apiUrl}/Filtrar_Acuerdos_Fecha?id_fraccionamiento=${id_fraccionamiento}&indice=${indice}&rango=${rango}&fechaOriginal=${fecha}`);
+  }
 }

@@ -19,10 +19,10 @@ import { PruebaComponent } from './prueba/prueba.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { PanelPrincipalAdminComponent } from './panel-principal-admin/panel-principal-admin.component';
-import { AcuerdosComponent } from './acuerdos/acuerdos.component';
-import { NotificacionesComponent } from './notificaciones/notificaciones.component';
+//import { AcuerdosComponent } from './acuerdos/acuerdos.component';
+//import { NotificacionesComponent } from './notificaciones/notificaciones.component';
 import { PropiedadesComponent } from './propiedades/propiedades.component';
-import { UsuariosComponent } from './usuarios/usuarios.component';
+//import { UsuariosComponent } from './usuarios/usuarios.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { PanelPrincipalUserComponent } from './panel-principal-user/panel-principal-user.component';
 import { PanelPrincipalTesoreroComponent } from './panel-principal-tesorero/panel-principal-tesorero.component';
@@ -58,7 +58,7 @@ import { ConsultarAcuerdosComponent } from './consultar-acuerdos/consultar-acuer
 import { InquilinosComponent } from './inquilinos/inquilinos.component';
 import { ConsultarDeudasComponent } from './consultar-deudas/consultar-deudas.component';
 import { DeudasComponent } from './deudas/deudas.component';
-import { TesoreroComponent } from './tesorero/tesorero.component';
+//import { TesoreroComponent } from './tesorero/tesorero.component';
 import { NoEncontradoDirective } from './no-encontrado/no-encontrado.directive';
 import { PaypalComponent } from './paypal/paypal.component';
 import { CommonModule } from '@angular/common';
@@ -75,10 +75,10 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     PruebaComponent,
     HomeComponent,
     PanelPrincipalAdminComponent,
-    AcuerdosComponent,
-    NotificacionesComponent,
+    //AcuerdosComponent,
+    //NotificacionesComponent,
     PropiedadesComponent,
-    UsuariosComponent,
+    //UsuariosComponent,
     NotFoundComponent,
     PanelPrincipalUserComponent,
     PanelPrincipalTesoreroComponent,
@@ -113,7 +113,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     InquilinosComponent,
     ConsultarDeudasComponent,
     DeudasComponent,
-    TesoreroComponent,
+    //TesoreroComponent,
     NoEncontradoDirective,
     PaypalComponent,
     IngresosComponent

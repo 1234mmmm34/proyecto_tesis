@@ -62,7 +62,7 @@
 
 
             <!--
-
+ 
 
             <td><a class="btn btn-sm text-white btn-success" style="margin-right: auto;">
                 <span class="glyphicon glyphicon-pencil" aria-hidden="true" (click)="enable(usuario)"></span>
@@ -87,17 +87,11 @@
       </table>
     </div>
 
+
     <div class="pages">
-
-      <p>Filas por página</p> <input type="number" id="pageNumber" class="page">
-
-      <button class="boton-verde" (click)="paginador_atras()">&lt;</button>
-      <p style="padding-top: 20px; "> {{cont}} - 5 </p>
-      <button class="boton-verde" (click)="paginador_adelante()">&gt;</button>
-
-  <!--    <a href="https://www.paypal.com/ncp/payment/R78AZGSW44VFU" target="_blank">Pagar con PayPal</a>  -->
-
-    </div>
+      <mat-paginator [length]="usuarios.length" [pageSize]="verdaderoRango" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page" (page)="pageChanged($event)">
+      </mat-paginator>
+  </div>
 
     <ng-template #noencontrado>
       <div class="div-noen">
@@ -294,23 +288,45 @@
 
 
 
-    <div class="form">
+    <div class="form_acciones">
 
 
-      <td><a class="btn btn-sm text-white btn-success" style="margin-right: auto;">
+      <p>Permitir acceso: </p>
+
+      <div class="botoness">
+        <a class="btn btn-sm text-white btn-success" style="margin-right: auto;">
           <span class="glyphicon glyphicon-pencil" aria-hidden="true" (click)="enable(usuario)"></span>
-        </a>
-      </td>
-      <td>
+      </a>
+
+      </div>
+
+      <p>Deshabilitar: </p>
+      <div class="botoness">
+
+
         <a class="btn btn-sm text-white btn-danger" style="margin-left: auto;">
           <span class="glyphicon glyphicon-remove" aria-hidden="true" (click)="disable(usuario)"></span>
         </a>
-      </td>
-      <td>
-        <a class="btn btn-sm text-white btn-danger" style="margin-left: auto;">
-          <span class="glyphicon glyphicon-remove" aria-hidden="true" (click)="delete(usuario)"></span>
-        </a>
-      </td>
+
+      </div>
+
+
+
+        <p>Borrar usuario: </p>
+        <div class="botoness">
+          <a class="btn btn-sm text-white btn-danger" style="margin-left: auto;">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true" (click)="delete(usuario)"></span>
+          </a>
+        </div>
+
+
+
+          <p>Tesorero: </p>
+
+          <div class="botoness">
+            <input type="checkbox" (click)="actualizar_tesorero()">
+
+          </div>
 
 
 

@@ -7,8 +7,8 @@ import {  deudas, deuda, deudores, graficas, entradas, historial } from "../app/
 import { lotes } from '../app/modelos/propiedades';
 import { inquilinos } from '../app/modelos/inquilinos';
 import {formatDate } from '@angular/common';
-import { Personas } from './cuenta/personas.model';
-import { PersonasService } from './notificaciones/personas.service';
+import { Personas } from './modelos/personas';
+//import { PersonasService } from './consultar-notificaciones/notificaciones.service';
 
 @Injectable({
   providedIn: 'root',
@@ -19,9 +19,60 @@ export class DataService {
   baseUrl1 = `https://localhost:44397/api/Personas/Consultar_Persona?id_administrador=`;
   baseUrl2 = `https://localhost:44397/Propiedades/Consultar_Propiedades?id_administrador=`;
   date1: any;
-  
+  mes: any;
   
   constructor(private http: HttpClient) {}
+
+  obtenerPrimerDiaDelMesActual(mes1: any): string {
+    // Obtener la fecha actual
+    const fechaActual = new Date();
+  
+    // Establecer la fecha al primer día del mes actual
+    fechaActual.setDate(1);
+  
+    // Obtener el año, el mes y el día
+    const año = fechaActual.getFullYear();
+
+    this.mes = mes1;
+
+    if(mes1==0){
+      this.mes = fechaActual.getMonth() + 1; // ¡Recuerda que los meses en JavaScript son 0-indexados!
+    }
+    
+    const dia = 1;
+  
+    // Formatear la fecha como 'YYYY-MM-DD'
+    const fechaFormateada = `${año}-${this.dosDigitos(this.mes)}-${this.dosDigitos(dia)}`;
+  
+    return fechaFormateada;
+  }
+
+  ultimoDiaDelMesActual(mes: any): string {
+    // Obtener la fecha actual
+    const fecha = new Date();
+    // Obtener el último día del mes actual
+    const ultimoDia = new Date(fecha.getFullYear(), fecha.getMonth() + 1, 0);
+
+    this.mes = mes;
+
+    if(mes==0){
+      this.mes = fecha.getMonth() + 1; // ¡Recuerda que los meses en JavaScript son 0-indexados!
+    }
+
+    // Obtener los componentes de la fecha
+    const year = ultimoDia.getFullYear();
+    const month = (this.mes).toString().padStart(2, '0'); // Agregar cero inicial si es necesario
+    const day = ultimoDia.getDate().toString().padStart(2, '0'); // Agregar cero inicial si es necesario
+    //console.log("MES: ",this.mes)
+    // Formatear la fecha como "yyyy-mm-dd"
+    console.log("MES: ",month)
+    return `${year}-${month}-${day}`;
+}
+  
+  // Función para asegurar que los números de mes y día tengan dos dígitos
+  dosDigitos(n: number): string {
+    return n < 10 ? '0' + n : '' + n;
+  }
 
   fetchData(id_administrador: any): Observable<fraccionamientos[]> {
     return this.http.get<fraccionamientos[]>(this.baseUrl+id_administrador);
@@ -100,13 +151,14 @@ export class DataService {
 
   }
 
-  consultarDeudasPorCobrar():Observable<graficas[]>{
-    let direccion = `https://localhost:44397/api/Graficos/Consultar_DeudasPorCobrar?id_fraccionamiento=${this.obtener_usuario(1)}`;
+  consultarDeudasPorCobrar(mes: any):Observable<graficas[]>{
+    let direccion = `https://localhost:44397/api/Graficos/Consultar_DeudasPorCobrar?id_fraccionamiento=${this.obtener_usuario(1)}&fecha_inicio=${this.obtenerPrimerDiaDelMesActual(mes)}&fecha_final=${this.ultimoDiaDelMesActual(mes)}`;
+    console.log(direccion)
     return this.http.get<graficas[]>(direccion);
   }
 
-  consultarEntradas():Observable<entradas[]>{
-    let direccion = `https://localhost:44397/api/Graficos/Consultar_Entradas`;
+  consultarEntradas(mes: any):Observable<entradas[]>{
+    let direccion = `https://localhost:44397/api/Graficos/Consultar_Entradas?fecha_inicio=${this.obtenerPrimerDiaDelMesActual(mes)}&fecha_final=${this.ultimoDiaDelMesActual(mes)}`;
     return this.http.get<entradas[]>(direccion);
   }
 /*
@@ -191,6 +243,15 @@ export class DataService {
       else if(op==7){
         return graficas.por_novariables;
     } 
+    else if(op==8){
+      return graficas.proyeccion_ingresos;
+  } 
+  else if(op==9){
+    return graficas.mes - 1;
+} 
+else if(op==10){
+  return graficas.egresos;
+} 
 
 
 

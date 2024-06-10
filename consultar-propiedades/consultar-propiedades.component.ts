@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { fraccionamiento, fraccionamientos } from "../modelos/fraccionamientos";
 import { usuario, usuarios } from "../modelos/usuarios"
 import { Router } from "@angular/router";
-import { UsuariosComponent } from '../usuarios/usuarios.component';
+//import { UsuariosComponent } from '../usuarios/usuarios.component';
 import * as $ from "jquery";
 import Swal from 'sweetalert2'
 import { timeInterval } from 'rxjs';

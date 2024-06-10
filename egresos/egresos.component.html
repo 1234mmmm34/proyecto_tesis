@@ -87,6 +87,7 @@
 
             <select id="proveedor" name="proveedor" [(ngModel)]="egresoModel.proveedor" required>
               <option value="" disabled selected>-- Selecciona un proveedor --</option>
+              <option value="na">sin proveedor</option>
               <option *ngFor="let proveedor of proveedores" [value]="proveedor.nombre">{{proveedor.id_proveedor}}-{{
                 proveedor.nombre }}</option>
             </select>

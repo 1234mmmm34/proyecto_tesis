@@ -10,7 +10,7 @@ import { Usuario } from './usuario.model';
 import Swal from 'sweetalert2'
 import { HttpHeaders } from '@angular/common/http';
 import { HttpClient, HttpParams} from '@angular/common/http';
-import { Personas } from '../cuenta/personas.model';
+import { Personas } from '../modelos/personas';
 import { NgModule } from '@angular/core';
 
 

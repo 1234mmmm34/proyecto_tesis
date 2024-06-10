@@ -18,9 +18,11 @@
 
             <input type="text" name="filtrar" placeholder="buscar" [(ngModel)]="filtroNotificaciones">
 
-            <div class="select-container">
+            
+            <div id="buscar1">
+                <span>Filtrar por: </span>
                 <select id="tipoNotificacion" (change)="onChange($event)">
-                    <option [ngValue]=2 [disabled]="true">-- tipo de notificación --</option>
+                    <option [ngValue]=2 [disabled]="true">-- Grupo de destinatarios --</option>
                     <option value="2">Todos</option>
                     <option value="0">General</option>
                     <option value="1">Individual</option>
@@ -34,14 +36,14 @@
 
 
         </div>
-
-        <div class="contenedor2">
+ 
+        <div class="contenedor2" *ngIf="this.notificaciones1.length>0; else noencontrado">
 
             <table class="table" width="100%">
                 <thead>
                     <tr>
 
-                        <th scope="col" width="300px" style=" font: 1em sans-serif;">Asunto</th>
+                        <th scope="col" class="asunto" width="300px" style=" font: 1em sans-serif;">Asunto</th>
                         <th scope="col">Detalles</th>
                         <th scope="col">Destinatario</th>
                         <th scope="col" style="text-align:center;width:200px;">
@@ -52,9 +54,9 @@
                 <tbody>
                     <tr tr mat-row matRowDef="columns: displayedcolumns;"
                         *ngFor="let notificacion of notificaciones1 | filtroNotificaciones: 'asunto': filtroNotificaciones">
-                        <td style=" font: 1em sans-serif;">{{ notificacion.asunto }}</td>
+                        <td class="asunto" style=" font: 1em sans-serif;">{{ notificacion.asunto }}</td>
                         <td>{{ notificacion.mensaje }}</td>
-                        <td>{{ notificacion.id_destinatario }}</td>
+                        <td>{{ notificacion.id_destinatario === 0 ? 'Todos' : notificacion.id_destinatario }}</td>
                         <td id="td-view">
 
                             <button type="button" id="view-button">
@@ -66,18 +68,20 @@
                 </tbody>
             </table>
 
+            <div class="pages">
+                <mat-paginator [length]="notificaciones.length" [pageSize]="verdaderoRango" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page" (page)="pageChanged($event)">
+                </mat-paginator>
+            </div>
 
+              
         </div>
 
-        <div class="pages">
-
-            <p>Filas por página</p> <input type="number" id="pageNumber" class="page">
-
-            <button class="boton-verde" (click)="paginador_atras()">&lt;</button>
-            <p style="padding-top: 20px; "> {{cont}} - 5 </p>
-            <button class="boton-verde" (click)="paginador_adelante()">&gt;</button>
-
-        </div>
+        <ng-template #noencontrado>
+            <div class="div-noen">
+                <img class="noencontrado" src="./no-en1.jpg">
+            </div>
+        </ng-template>  
+ 
 
 
 
@@ -89,7 +93,7 @@
         <label for="modal" class="modal-background"></label>
 
 
-         
+
             <div class="modal">
                 <div class="modal-header">
                     <h3>Agregar notificación</h3>
@@ -119,7 +123,7 @@
                         </div>
 
 
- 
+
 
                         <div class="form-group">
                             <select id="destinatario" name="destinatario" required ngModel>

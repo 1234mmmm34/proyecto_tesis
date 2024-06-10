@@ -5,7 +5,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Usuario } from './usuario.model';
 import { ImageService } from './image.service';
-import { Personas } from './personas.model';
+import { Personas } from '../modelos/personas';
 import Swal from 'sweetalert2';
 
 
@@ -61,7 +61,7 @@ export class CuentaComponent {
         this.apellido_mat = personas[0].apellido_mat
         this.tipo_usuario = personas[0].tipo_usuario
         this.telefono = personas[0].telefono
-
+ 
         let fecha = new Date(personas[0].fecha_nacimiento); // Suponiendo que tienes una fecha
         let dia = fecha.getDate(); // Obtiene el día del mes (1-31)
         let mes = fecha.getMonth(); // Obtiene el mes (0-11)

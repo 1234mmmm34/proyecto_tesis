@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { FraccionamientosComponent } from './fraccionamientos/fraccionamientos.component';
-import { AcuerdosComponent } from './acuerdos/acuerdos.component';
-import { NotificacionesComponent } from './notificaciones/notificaciones.component';
+//import { AcuerdosComponent } from './acuerdos/acuerdos.component';
+//import { NotificacionesComponent } from './notificaciones/notificaciones.component';
 import { PropiedadesComponent } from './propiedades/propiedades.component';
-import { UsuariosComponent } from './usuarios/usuarios.component';
+//import { UsuariosComponent } from './usuarios/usuarios.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { PanelPrincipalAdminComponent } from './panel-principal-admin/panel-principal-admin.component';
 import { DeudasOrdinariasComponent } from './deudas-ordinarias/deudas-ordinarias.component';
@@ -39,19 +39,19 @@ import { InvitacionComponent } from './invitacion/invitacion.component';
 import { InicioSesionComponent } from './inicio-sesion/inicio-sesion.component';
 import { RecuperacionContraseniaComponent } from './recuperacion-contrasenia/recuperacion-contrasenia.component';
 import { DeudasComponent } from './deudas/deudas.component';
-import { TesoreroComponent } from './tesorero/tesorero.component'
+//import { TesoreroComponent } from './tesorero/tesorero.component'
 import {ConsultarUsuariosTesoreroComponent } from './consultar-usuarios-tesorero/consultar-usuarios-tesorero.component'
 import {IngresosComponent } from './ingresos/ingresos.component'
 
 
 const routes: Routes = [
  // {path:'Home', component:HomeComponent},
-  {path:'Acuerdos', component:AcuerdosComponent},
-  {path:'Notificaciones', component:NotificacionesComponent},
+  //{path:'Acuerdos', component:AcuerdosComponent},
+  //{path:'Notificaciones', component:NotificacionesComponent},
   {path:'ConsultarNotificaciones', component:ConsultarNotificacionesComponent},
   {path:'Propiedades', component:PropiedadesComponent},
   {path:'Fraccionamientos',component:FraccionamientosComponent},
-  {path:'Usuarios', component:UsuariosComponent},
+  //{path:'Usuarios', component:UsuariosComponent},
   {path:'Agregar_Usuario', component:AgregarUsuarioComponent},
   {path:'Registros', component:RegistrosComponent},
   {path:'Inquilinos', component:InquilinosComponent},
@@ -77,27 +77,29 @@ const routes: Routes = [
   children: [
     {path:'Home', component:HomeComponent},
     //{path:'PanelAdmin', component:PanelPrincipalAdminComponent},
-    {path:'Acuerdos', component:AcuerdosComponent},
-    {path:'Notificaciones', component:NotificacionesComponent},
-    {path:'Notificaciones', component:NotificacionesComponent},
-    {path:'ConsultarNotificaciones', component:ConsultarNotificacionesComponent},
-    {path:'ConsultarAcuerdos', component:ConsultarAcuerdosComponent},
+  //  {path:'Acuerdos', component:AcuerdosComponent},
+   // {path:'Notificaciones', component:NotificacionesComponent},
+   // {path:'Notificaciones', component:NotificacionesComponent},
+    {path:'Notificaciones', component:ConsultarNotificacionesComponent},
+    {path:'Acuerdos', component:ConsultarAcuerdosComponent},
     {path:'ConsultarPropiedades', component:ConsultarPropiedadesComponent},
     {path: 'Inquilinos', component:InquilinosComponent},
-    {path:'AgregarUsuario', component:AgregarUsuarioComponent},
-    {path:"Tesorero", component:TesoreroComponent},
+    {path:'Usuarios', component:AgregarUsuarioComponent},
+    //{path:"Tesorero", component:TesoreroComponent},
     {path:'Propiedades', component:PropiedadesComponent, 
     children: [
       {path:'Propiedades', component:PropiedadesComponent},
       {path:'ConsultarPropiedades', component:ConsultarPropiedadesComponent}
     ]},
-    {path:'Fraccionamientos',component:FraccionamientosComponent},
+    {path:'Controlador',component:FraccionamientosComponent},
+    /*
     {path:'Usuarios', component:UsuariosComponent, 
     children: [
       {path:'ConsultarUsuario', component:EmailComponent},
       {path:'AgregarUsuario', component:AgregarUsuarioComponent}
     ]},
-    {path:"Settings", component:CuentaComponent}
+    */
+    {path:"Configuracion", component:CuentaComponent}
   ]},//Final panel admin
 
 //inicio panel tesorero
@@ -113,8 +115,8 @@ children:[
 {path:'IngresosExtraordinarios', component:IngresosExtraordinariosComponent},
 {path:'IngresosOrdinarios', component:IngresosOrdinariosComponent},
 {path:'Proveedores', component:ProveedoresComponent},
-{path:'Usuarios', component:UsuariosComponent},
-{path:'Usuarios', component:UsuariosComponent, children: [
+//{path:'Usuarios', component:UsuariosComponent},
+{path:'Usuarios', component:AgregarUsuarioComponent, children: [
   {path:'ConsultarUsuariosTesorero', component:ConsultarUsuariosTesoreroComponent},
 ]},
 {path:'ConsultarUsuariosTesorero', component:ConsultarUsuariosTesoreroComponent},

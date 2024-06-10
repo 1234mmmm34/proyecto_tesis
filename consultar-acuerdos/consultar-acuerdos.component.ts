@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
-import { AcuerdosService } from '../acuerdos/acuerdos.service';
-import { Acuerdos } from '../acuerdos/acuerdos.model';
+import { AcuerdosService } from './acuerdos.service';
+import { Acuerdos } from '../modelos/acuerdos';
 import { DataService } from '../data.service';
 import { NoEncontradoDirective } from '../no-encontrado/no-encontrado.directive';
 import Swal from 'sweetalert2'
@@ -35,10 +35,33 @@ ngOnInit(): void {
   this.consultarAcuerdos();
   
 }
+ 
+
+
+
+/*
+paginador_atras() {
+
+  if (this.indice - this.verdaderoRango >= 0) {
+    this.notificaciones1 = this.notificaciones.slice(this.indice - this.verdaderoRango, this.indice);
+    this.indice = this.indice - this.verdaderoRango;
+    this.cont--;
+  }
+}
+
+paginador_adelante() {
+  if (this.notificaciones.length - (this.indice + this.verdaderoRango) > 0) {
+    this.indice = this.indice + this.verdaderoRango;
+    this.notificaciones1 = this.notificaciones.slice(this.indice, this.indice + this.verdaderoRango);
+    this.cont++;
+   // this.consultarNotificacion
+  } 
   
+}
 
 
 
+*/
  
 
 
@@ -77,6 +100,17 @@ agregarAcuerdo(formulario: any) {
 }
 
 
+  
+pageChanged(event: any) {
+  // Determinar la acción del paginator
+  if (event.previousPageIndex < event.pageIndex) {
+    // Se avanzó a la siguiente página
+    this.paginador_adelante();
+  } else if (event.previousPageIndex > event.pageIndex) {
+    // Se retrocedió a la página anterior
+    this.paginador_atras();
+  }
+}
 
 
 
@@ -110,7 +144,7 @@ agregarAcuerdo(formulario: any) {
           
           this.acuerdos = data;
           this.acuerdos1 = this.acuerdos.slice(this.indice, this.indice + this.verdaderoRango);
-       
+        //  console.log(this.acuerdos1);
           
         }
       });
@@ -147,7 +181,30 @@ agregarAcuerdo(formulario: any) {
     return `${year}-${month}-${day}`;
   // return `${day}-${month}-${year}`;
   }
-  
+   
+ 
+  onFechaSeleccionada() {
+    // Aquí puedes realizar las acciones que desees cuando se selecciona una fecha
+    console.log("Se seleccionó una fecha:", this.filtroFecha);
 
+    // Por ejemplo, podrías llamar a una función para filtrar datos basados en la fecha seleccionada
+    this.filtrarDatosPorFecha(this.filtroFecha);
+  }
 
+  filtrarDatosPorFecha(fecha: any) {
+
+    this.acuerdosService.consultarAcuerdosFecha(this.dataService.obtener_usuario(1), 0, 100, fecha ).subscribe(
+      (data: Acuerdos[]) => {
+        
+        if(data.length!=0){ 
+          
+          this.acuerdos = data;
+          this.indice = 0;
+          this.acuerdos1 = this.acuerdos.slice(0, this.verdaderoRango);
+        //  console.log(this.acuerdos1);
+          
+        }
+      });
+  }
 }
+

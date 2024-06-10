@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Personas } from './personas.model';
+import { Personas } from '../modelos/personas';
 //import { PersonasService } from './personas.service';
 import { NotificacionesService } from './notificaciones.service';
-import { Notificaciones } from './notificaciones.model';
+import { Notificaciones } from '../modelos/notificaciones';
 import { usuario, usuarios } from "../modelos/usuarios";
 import { NumberFormatStyle } from '@angular/common';
 import { DataService } from '../data.service';
@@ -18,12 +18,12 @@ export class ConsultarNotificacionesComponent {
     private notificacionesService: NotificacionesService, private dataService: DataService) { }
   personas: Personas[] = [];
 
-  id_fraccionamineto: number = 15;
+  id_fraccionamineto: number = this.dataService.obtener_usuario(1);
   respuestaNotificacion: string | null = null;
   idNotificacion: number | undefined;
   notificaciones: Notificaciones[] = [];
   tipoSeleccionado: string = 'General';
-  idFraccionamiento: number = 15;
+  idFraccionamiento: number = this.dataService.obtener_usuario(1);
   idUsuario: number = 0;
   filtroNotificaciones: "" | undefined;
   usuarios: usuarios[] = [];
@@ -43,11 +43,21 @@ export class ConsultarNotificacionesComponent {
     //this.consultarNotificacion(this.dataService.obtener_usuario(1), 0, 6, this.id_destinatario);
   // this.registrosTotales = this.dataService.numeroRegistrosTabla(this.dataService.obtener_usuario(1), "notificaciones")
 
-   
 
-  
+
+
   }
 
+  pageChanged(event: any) {
+    // Determinar la acción del paginator
+    if (event.previousPageIndex < event.pageIndex) {
+      // Se avanzó a la siguiente página
+      this.paginador_adelante();
+    } else if (event.previousPageIndex > event.pageIndex) {
+      // Se retrocedió a la página anterior
+      this.paginador_atras(); 
+    }
+  }
 
 
   paginador_atras() {
@@ -65,20 +75,20 @@ export class ConsultarNotificacionesComponent {
       this.notificaciones1 = this.notificaciones.slice(this.indice, this.indice + this.verdaderoRango);
       this.cont++;
      // this.consultarNotificacion
-    } 
-    
+    }
+
   }
 
-  onChange(event: any){ 
+  onChange(event: any){
 
       const selectedValue = event.target.value;
-    
+
       this.id_destinatario=selectedValue;
      // console.log(this.id_destinatario);
 
      this.consultarNotificacion(this.dataService.obtener_usuario(1), 0, 100, this.id_destinatario);
   }
-  
+
 
   consultarNotificacion(idFraccionamiento: any, indice: number, verdaderoRango: number, id_destinatario: number) {
     this.NotificacionesService.consultarNotificacion(idFraccionamiento, 0, 100, id_destinatario).subscribe((notificaciones: Notificaciones[]) => {
@@ -89,7 +99,7 @@ export class ConsultarNotificacionesComponent {
         this.notificaciones1 = this.notificaciones.slice(this.indice, this.indice + this.verdaderoRango);
 
       });
-  } 
+  }
 
 
 
@@ -110,10 +120,10 @@ export class ConsultarNotificacionesComponent {
     }
     //console.log(destinatarioId);
     const asunto = formulario.asunto;
-    //console.log(asunto); 
+    //console.log(asunto);
     const mensaje = formulario.mensaje;
     //console.log(mensaje);
- 
+
     this.NotificacionesService.agregarNotificacion(idFraccionamiento, tipo, destinatarioId, asunto, mensaje)
       .subscribe(
         (respuesta: string) => {
@@ -135,12 +145,12 @@ export class ConsultarNotificacionesComponent {
             icon: 'error',
             confirmButtonText: 'Aceptar'
           });
-        
+
         }
       );
    }
 
-
+ 
 
 
 
