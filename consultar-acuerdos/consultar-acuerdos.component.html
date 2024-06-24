@@ -14,15 +14,17 @@
     <hr>
 
 
-    <div class="contenedor1">
+    <div class="contenedor1" *ngIf="mostrarGrid">
         <div id="buscar">
 
- 
+  
             <input type="text" name="filtrar" placeholder="buscar" [(ngModel)]="filtroAcuerdos">
             <input type="date" name="filtrarFecha" [(ngModel)]="filtroFecha" id="buscar1" (ngModelChange)="onFechaSeleccionada()">
             <label for="modal" class="boton">Agregar</label>
 
         </div>
+
+        <!-- *ngIf="this.acuerdos1.length>0; else noencontrado"  -->
  
         <div class="contenedor2" *ngIf="this.acuerdos1.length>0; else noencontrado">
 

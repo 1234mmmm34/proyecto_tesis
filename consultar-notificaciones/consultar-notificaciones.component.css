@@ -342,7 +342,8 @@ input[type="checkbox"]:checked ~ .modal-background {
 
 
 ng-template{
-  background-image: url("./no-en1.jpg");
+  background-image: url("./no-en2.jpg");
+
 
 
   
@@ -350,12 +351,11 @@ ng-template{
 
 .div-noen {
 
- 
-
-
   display: flex;
+  margin-top: 180px;
   justify-content: center; /* Centra los elementos horizontalmente */
   align-items: center; /* Centra los elementos verticalmente */
+  
   
 }
 
@@ -363,6 +363,7 @@ ng-template{
 
 
 left: 10%;
+
  
 }
 

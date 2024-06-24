@@ -11,9 +11,9 @@
     </div>
 
     <hr>
+ 
 
-
-    <div class="contenedor1">
+    <div class="contenedor1" *ngIf="mostrarGrid">
         <div id="buscar">
 
             <input type="text" name="filtrar" placeholder="buscar" [(ngModel)]="filtroNotificaciones">
@@ -78,8 +78,10 @@
 
         <ng-template #noencontrado>
             <div class="div-noen">
-                <img class="noencontrado" src="./no-en1.jpg">
+                <img class="noencontrado" src="./no-en2.jpg">
+                <p>holaaa</p>
             </div>
+            
         </ng-template>  
  
 

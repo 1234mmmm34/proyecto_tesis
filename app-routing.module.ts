@@ -102,6 +102,8 @@ const routes: Routes = [
     {path:"Configuracion", component:CuentaComponent}
   ]},//Final panel admin
 
+  {path:"Configuracion", component:CuentaComponent},
+
 //inicio panel tesorero
 {path:'PanelTesorero', component:PanelPrincipalTesoreroComponent,
 children:[

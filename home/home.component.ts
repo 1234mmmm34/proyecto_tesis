@@ -126,7 +126,7 @@ export class HomeComponent {
 
     // Abre el modal de carga sin un temporizador
     Swal.fire({
-   
+    
       title: 'Cargando datos',
       html: 'por favor espere',
       didOpen: () => {

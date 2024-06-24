@@ -13,12 +13,14 @@
   
  body{
  
-  background-image: url("src/assets/Contacto.png");
+  background-image: url("src/assets/Contacto2.png");
   display: flex;
   background-repeat: no-repeat;
+  background-size: 1825px 288px;
+  background-color: #f2f3f4;
  
 
-
+ 
 
  }
 
@@ -123,7 +125,7 @@ section {
 }
 
 .footer-distributed {
-  background-color: rgb(149, 150, 193, 1); 
+  background-color: #DADED1; 
   width: 100%;
   text-align: left;
   font: normal 16px sans-serif;
@@ -240,10 +242,10 @@ section {
 }
 
 .container{
-  margin-top: 8%;
+  margin-top: 18%;
   margin-bottom: 1%;
   position: relative;
-  margin-left: 33%;
+
   width: 1200px;
   
  
@@ -256,15 +258,14 @@ input{
 
 }
 .panel-login {
-  border-color: #ccc;
+  background-color: transparent;
 
--webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
--moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
 }
+
 .panel-login>.panel-heading {
-color: #afcedb;
-background-color: #fff;
+  color: #afcedb;
+  background-color: #fff;
+  background-color: transparent;
 
 text-align:center;
 }
@@ -289,16 +290,13 @@ margin-bottom: 0px;
 clear: both;
 height: 1px;
 
-background-image: -webkit-linear-gradient(left,rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.15),rgba(0, 0, 0, 0));
-background-image: -moz-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
-background-image: -ms-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
-background-image: -o-linear-gradient(left,rgba(0,0,0,0),rgba(0,0,0,0.15),rgba(0,0,0,0));
 }
 .panel-login input[type="text"],.panel-login input[type="email"],.panel-login input[type="password"] {
 height: 45px;
 width: 74%;
 margin: auto;
 font-size: 16px;
+background-color: transparent;
 
 
 border: none;

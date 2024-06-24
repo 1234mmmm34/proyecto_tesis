@@ -1,7 +1,13 @@
 body{
-  background-color: #ccdfc3; 
+  background-color: #f2f3f4; 
 }
 
+hr{
+  height: 1px;
+  border: 0;
+  width: 85%;
+  background-color: rgb(108, 108, 111);
+ }
 
 .example-container {
   display: flex;
@@ -25,7 +31,7 @@ position: absolute;
 .configuracion{
   margin-top: 40px;
 /*  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.20); */
-background-color: rgb(149, 150, 193, 1);
+background-color: rgb(91, 91, 96);
 }
 
 img{
@@ -34,7 +40,9 @@ img{
 .mat-toolbar{
   /*  background-color: #768650;  */
   /* background-color: #575d43; */
-  background-color: #c1bffc;
+ /* background-color: #c1bffc; */
+ background-color: #DADED1;
+  
 
 
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
@@ -58,7 +66,7 @@ img{
 
 a{
   margin-left: auto;
-  margin-right: 2%;
+
 
 }
 
@@ -141,7 +149,7 @@ a h6{
 mat-sidenav{
   width: 250px;
 
-  background: linear-gradient(rgb(149, 150, 193, 1),rgb(152, 152, 190), rgb(160, 161, 197));
+  background: rgb(91, 91, 96);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.20);
 }
 
@@ -174,7 +182,7 @@ p{
 
 
 mat-expansion-panel{
-  background-color: rgb(149, 150, 193, 1); 
+  background-color: rgb(91, 91, 96);
   border-style: none;
   box-shadow: none;
 
@@ -182,7 +190,7 @@ mat-expansion-panel{
 }
 
 mat-expansion-panel-header{
-  background-color: rgb(149, 150, 193, 1); 
+  background-color: rgb(91, 91, 96); 
   border-style: none;
   box-shadow: none;
   box-shadow: rgb(38, 40, 177);
@@ -193,9 +201,12 @@ mat-expansion-panel-header{
 mat-icon{ 
   
   position: absolute;
+  outline: #ccdfc3;
   left: 10px;
-  font-size: 20px;
+ 
 }
+
+
 
 
 

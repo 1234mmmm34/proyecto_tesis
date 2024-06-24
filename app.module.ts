@@ -66,6 +66,9 @@ import { RouterOutlet } from '@angular/router';
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 import { IngresosComponent } from './ingresos/ingresos.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { heroUsers } from '@ng-icons/heroicons/outline';
+import { NgIconsModule } from '@ng-icons/core';
+import { featherAirplay } from '@ng-icons/feather-icons';
 
 @NgModule({
   declarations: [

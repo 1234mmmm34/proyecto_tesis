@@ -33,6 +33,7 @@ export class ConsultarNotificacionesComponent {
   registrosTotales: number = 0;
   notificaciones1: Notificaciones[] = [];
   id_destinatario: number = 2;
+  mostrarGrid: boolean = false;
 
 
 
@@ -91,8 +92,26 @@ export class ConsultarNotificacionesComponent {
 
 
   consultarNotificacion(idFraccionamiento: any, indice: number, verdaderoRango: number, id_destinatario: number) {
+
+    Swal.fire({
+   
+      title: 'Cargando datos',
+      html: 'por favor espere',
+      didOpen: () => {
+
+        Swal.showLoading();
+
+      },
+      willClose: () => {
+        clearInterval(10);
+        this.mostrarGrid = true;
+
+      }
+    });
+
     this.NotificacionesService.consultarNotificacion(idFraccionamiento, 0, 100, id_destinatario).subscribe((notificaciones: Notificaciones[]) => {
       //  console.log("notificaciones: ", valor);
+      Swal.close();
         this.notificaciones = notificaciones;
         this.indice = 0;
         this.verdaderoRango = 6;

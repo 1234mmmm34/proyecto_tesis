@@ -5,6 +5,7 @@ import { DataService } from '../data.service';
 import { NoEncontradoDirective } from '../no-encontrado/no-encontrado.directive';
 import Swal from 'sweetalert2'
 import { NgForm } from '@angular/forms';
+
  
 @Component({
   selector: 'app-consultar-acuerdos',
@@ -27,6 +28,7 @@ indice: number = 0;
 verdaderoRango: number = 6;
 cont: number = 1;
 acuerdos1: Acuerdos[] = [];
+mostrarGrid: boolean = false;
 
 constructor(private acuerdosService: AcuerdosService,private dataService:DataService) {}
 
@@ -39,30 +41,6 @@ ngOnInit(): void {
 
 
 
-/*
-paginador_atras() {
-
-  if (this.indice - this.verdaderoRango >= 0) {
-    this.notificaciones1 = this.notificaciones.slice(this.indice - this.verdaderoRango, this.indice);
-    this.indice = this.indice - this.verdaderoRango;
-    this.cont--;
-  }
-}
-
-paginador_adelante() {
-  if (this.notificaciones.length - (this.indice + this.verdaderoRango) > 0) {
-    this.indice = this.indice + this.verdaderoRango;
-    this.notificaciones1 = this.notificaciones.slice(this.indice, this.indice + this.verdaderoRango);
-    this.cont++;
-   // this.consultarNotificacion
-  } 
-  
-}
-
-
-
-*/
- 
 
 
 agregarAcuerdo(formulario: any) {
@@ -135,13 +113,32 @@ pageChanged(event: any) {
 
 
   consultarAcuerdos(): void {
+
+    Swal.fire({
+   
+      title: 'Cargando datos',
+      html: 'por favor espere',
+      didOpen: () => {
+
+        Swal.showLoading();
+
+      },
+      willClose: () => {
+        clearInterval(10);
+        this.mostrarGrid = true;
+
+      }
+    });
+
     const idFraccionamiento = this.dataService.obtener_usuario(1); 
    
     this.acuerdosService.consultarAcuerdosPaginados(idFraccionamiento, 0, 100).subscribe(
       (data: Acuerdos[]) => {
+
+        Swal.close();
         
         if(data.length!=0){ 
-          
+           
           this.acuerdos = data;
           this.acuerdos1 = this.acuerdos.slice(this.indice, this.indice + this.verdaderoRango);
         //  console.log(this.acuerdos1);

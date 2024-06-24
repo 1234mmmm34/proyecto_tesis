@@ -1,3 +1,6 @@
+body{
+  background-color: #F6F6F9;
+}
 h1{
   text-align: center;
   background-color: aqua;
@@ -7,6 +10,7 @@ h1{
 #grid{
 
   display: flex;
+  background-color: #F6F6F9;
 
 }
 
@@ -28,7 +32,9 @@ h1{
  /*border: 1px solid rgb(128, 125, 125); /* Añade bordes para visualizar las columnas */
 
 
-  box-shadow: 2px 4px 4px 3px rgba(144, 143, 131, 0.5);
+  box-shadow: 2px 4px 12px rgba(0,0,0,0.1);
+  background-color: #fff;
+  
   width: 200px;
   margin-top: 10px;
   border-radius: 3%;
@@ -75,7 +81,8 @@ h1{
 }
 
 #cuadro1{
-  box-shadow: 2px 4px 4px 3px rgba(144, 143, 131, 0.5);
+  box-shadow: 2px 4px 12px rgba(0,0,0,0.1);
+  background-color: #fff;
   border-radius: 3%;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -105,7 +112,8 @@ h1{
 
 #div1, #div2, #cdiv2, #cdiv3{
 
- box-shadow: 2px 4px 4px 3px rgba(144, 143, 131, 0.5);
+  box-shadow: 2px 4px 12px rgba(0,0,0,0.1);
+  background-color: #fff;
  border-radius: 3%;
 
 }

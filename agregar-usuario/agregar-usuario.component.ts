@@ -25,6 +25,8 @@ export class AgregarUsuarioComponent {
   filtroUsuarios: "" | undefined;
   id_usuario: any;
   tesorero: any;
+  mostrarGrid: boolean = false;
+
 
   indice: number = 0; 
 verdaderoRango: number = 6;
@@ -56,8 +58,26 @@ cont: number = 1;
   }
 
   fetchDataUsers(id_administrador: any) {
-    console.log("id admiiiiiiiiiiiiiiiiiiiiiiin: " + id_administrador);
+  //  console.log("id admiiiiiiiiiiiiiiiiiiiiiiin: " + id_administrador);
+  Swal.fire({
+   
+    title: 'Cargando datos',
+    html: 'por favor espere',
+    didOpen: () => {
+
+      Swal.showLoading();
+
+    },
+    willClose: () => {
+      clearInterval(10);
+      this.mostrarGrid = true;
+
+    }
+  });
+
     this.dataService.fetchDataUsers(id_administrador).subscribe((usuarios: usuarios[]) => {
+      Swal.close();
+        
       console.log("fetch", usuarios);
       this.usuarios = usuarios;
     });
