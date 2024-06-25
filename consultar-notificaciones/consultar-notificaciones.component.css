@@ -11,34 +11,46 @@ body {
 #buscar1{
   display: inline-block;
   width: 500px;
+  padding-top: 15px;
 }
  
 span{
-  margin-left: 20px;
+  margin-left: 3px;
+  
 }
 
 .asunto{
   padding-left: 20px; 
 }
 
-/* Estilo base para el combobox */
-select {
 
-  /* Redondear los bordes */
-  border-radius: 5px;
-  /* Eliminar los estilos nativos del navegador */
-  appearance: none;
-  /* Agregar un borde y rellenar */
-  border: 1px solid #ccc;
-  padding: 10px;
-  /* Añadir un fondo */
-  background-color: #fff;
-  /* Añadir margen para separar el combobox de otros elementos */
-  margin-left: 15px;
-  /* Establecer un ancho */
-  text-align: center;
-  width: 200px;
+
+input, select{
+  border:none;
+  border-bottom:1px solid #757575;
+  background-color: transparent;
+  margin-top: 3px;
+  width: 70%;
+  margin-left: 10%;
 }
+
+
+
+.form-group > input{
+  border:none;
+  border-bottom:1px solid #757575;
+  border-radius: 0%;
+
+}
+
+.form-group > input, .form-group > textarea, .form-group > select{
+  margin:auto !important;
+  width: 120%;
+  text-align: center;
+  resize: none;
+
+}
+
 
 /* Estilo para el icono de desplegar */
 select::after {
@@ -62,6 +74,7 @@ select::after {
 
 }
 
+
 input {
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -72,6 +85,7 @@ input {
   margin-left: 50px;
 
 }
+
 
 .contenedor2 {
   height: 600px;
@@ -239,6 +253,10 @@ td{
 
 }
 
+#tipoNotificacion{
+  text-align: center;
+}
+
 
 
 /*    MODAL   */
@@ -322,17 +340,15 @@ input[type="checkbox"]:checked ~ .modal-background {
   width: 500px;
   display: flex;
   flex-direction: column;
-  margin-top: 40px;
+  margin-top: 60px;
+  
   align-items: center;
   margin: auto;
 
 
 }
 
-.form-group > #asunto, .form-group > #mensaje{
-  margin-left: auto;
-  width: 100%;
-}
+
 
 .Formulario {
   position: absolute;

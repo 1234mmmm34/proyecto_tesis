@@ -14,12 +14,30 @@ body {
 
 }
 
+.form-group > #asunto{
+  border:none;
+  border-bottom:1px solid #757575;
+  border-radius: 0%;
+  width: 270px !important;
+  
+
+}
+
+textarea{
+  margin:auto !important;
+  width: 100%;
+  text-align: center;
+  resize: none;
+
+}
+
+
 .asunto{
   padding-left: 20px; 
 }
 
 
-input {
+#buscar1, #buscar2 {
   border: 1px solid #ccc;
   border-radius: 5px;
   width: 350px;
@@ -100,16 +118,6 @@ input {
 }
 
 
-/*
-    input{
-      border:none;
-      text-align: center;
-      width: 200px;
-      border-bottom:1px solid #757575;
-
-    }
-
-*/
 
 .titulo {
   text-align: justify !important;

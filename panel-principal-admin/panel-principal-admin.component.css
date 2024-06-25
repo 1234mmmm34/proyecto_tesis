@@ -1,48 +1,47 @@
-body{
-  background-color: #f2f3f4; 
+body {
+  background-color: #f2f3f4;
 }
 
-hr{
-  height: 1px;
+hr {
+  height: 0.5px;
   border: 0;
   width: 85%;
-  background-color: rgb(108, 108, 111);
- }
+  background-color: rgb(217, 217, 224);
+}
+
+
 
 .example-container {
   display: flex;
- 
+
   flex-direction: column;
-position: absolute;
+  position: absolute;
 
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
- 
+
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.08), 0 2px 4px 0 rgba(0, 0, 0, 0.12);
 
-} 
-
-.mat-drawer-inner-container { overflow: hidden; }
-
-
-
-.configuracion{
-  margin-top: 40px;
-/*  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.20); */
-background-color: rgb(91, 91, 96);
 }
 
-img{
+.configuracion {
+  margin-top: 10px;
+  /*  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.20); */
+  background-color: #fff;
+}
+
+img {
   color: aliceblue;
 }
-.mat-toolbar{
+
+.mat-toolbar {
   /*  background-color: #768650;  */
   /* background-color: #575d43; */
- /* background-color: #c1bffc; */
- background-color: #DADED1;
-  
+  /* background-color: #c1bffc; */
+  background-color: #DADED1;
+
 
 
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
@@ -52,7 +51,7 @@ img{
 
 
 
-  }
+}
 
 
 
@@ -64,28 +63,19 @@ img{
   /* Make sure the toolbar will stay on top of the content as it scrolls past. */
 }
 
-a{
+a {
   margin-left: auto;
-
-
 }
 
-a>h6{
-
-  
-  margin-right: 4%;
-  font-size: 15px;
 
 
-}
-
-button{
+button {
   margin-bottom: 10px;
   padding: 0%;
 }
 
 a h2.example-app-name {
- /* margin-left: auto; */
+  /* margin-left: auto; */
   color: rgb(4, 8, 69);
   margin-top: 0px;
   margin-bottom: 0px;
@@ -93,21 +83,23 @@ a h2.example-app-name {
 
 }
 
-a h6{
+
+
+a h6 {
   text-align: center;
   margin-bottom: 10px;
   color: rgb(4, 8, 69);
   line-height: 2%;
 
-  
+
 }
 
 
-#usuario{
+#usuario {
   padding-top: 10px;
   margin-right: 2%;
   margin-bottom: 5px;
-  
+
 }
 
 
@@ -118,19 +110,19 @@ a h6{
   /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
      causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. 
       flex: 1;
-     */ 
+     */
 
-     flex: 1;
-
-
- /* background-color: #edfbe6; */
-/* background: linear-gradient(rgb(201, 231, 201),rgb(241, 241, 241), rgb(255, 255, 255)); */
+  flex: 1;
 
 
-  
+  /* background-color: #edfbe6; */
+  /* background: linear-gradient(rgb(201, 231, 201),rgb(241, 241, 241), rgb(255, 255, 255)); */
+
+
+
 }
 
-.mat-sidenav-content{
+.mat-sidenav-content {
   overflow: hidden;
 }
 
@@ -139,86 +131,91 @@ a h6{
      `<body>` to be our scrolling element for mobile layouts.
       flex: 1 0 auto; 
      */
- 
-     flex: 1 0 auto;
+
+  flex: 1 0 auto;
 
 }
 
 
 
-mat-sidenav{
+mat-sidenav {
   width: 250px;
 
-  background: rgb(91, 91, 96);
+  background: #fff;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.20);
 }
 
+mat-sidenav > a > p:hover{
+  background-color: aqua;
+}
 
 
-.opciones{
+
+.opciones {
   color: rgb(0, 0, 0);
   padding-left: 50px;
   padding-top: 16px;
-  
+
 }
 
-p{
+p {
   font-size: 15px;
   color: black;
+
+}
+
+
+p:hover,
+a:hover {
+
+  color: black !important;
+  transition: all 0.3s;
+
+}
+
+.opciones:hover{
+  border-left: solid 4px rgb(51, 52, 47);
   
 }
 
 
-#logo{
+#logo {
   height: 55px;
-  width: 130px; 
+  width: 130px;
 
 }
 
-#logo1{
-  height: 94px;
-  width: 110px; 
-}
 
 
-mat-expansion-panel{
-  background-color: rgb(91, 91, 96);
+
+
+mat-expansion-panel  mat-expansion-panel-header{
+  background-color: #fff;
   border-style: none;
   box-shadow: none;
 
 
 }
 
-mat-expansion-panel-header{
-  background-color: rgb(91, 91, 96); 
-  border-style: none;
-  box-shadow: none;
-  box-shadow: rgb(38, 40, 177);
 
+mat-icon {
 
-}
- 
-mat-icon{ 
-  
   position: absolute;
   outline: #ccdfc3;
   left: 10px;
- 
+
 }
 
 
 
 
 
-mat-panel-title, mat-nav-list, a, mat-expansion-panel-header, mat-sidenav-container{
- 
+mat-panel-title,
+mat-nav-list,
+a,
+mat-expansion-panel-header,
+mat-sidenav-container {
+
   font: 1em sans-serif;
 
 }
-
-
-
-
-
-
-

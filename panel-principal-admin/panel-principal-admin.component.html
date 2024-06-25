@@ -3,7 +3,6 @@
   <meta http-equiv="Last-Modified" content="0">
   <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
   <meta http-equiv="Pragma" content="no-cache">
- <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet"/> -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@200" />
 
 </head>
@@ -16,7 +15,7 @@
     <h2><img src="../../assets/logo4r.png" id="logo"><img></h2>
     <a style="text-decoration: none;">
       <h2 class="example-app-name">{{usuario}}</h2>
-      <h6>administrador</h6>
+      <h6 style="font-size: medium;">administrador</h6>
     </a>
     <div
       style="background-color: transparent transparent; width: 40px; height: 40px; border-radius: 50%; overflow: hidden; margin-top: 10px; display: flex; justify-content: left; align-items: left; position: relative;">
@@ -54,8 +53,8 @@
              
           <ng-template #itemTemplate>
             <a mat-list-item [routerLink]="Nav.route" class="opciones" style="text-decoration: none;">
-              <mat-icon class="material-symbols-outlined" style="-webkit-text-fill-color:antiquewhite; transform: scale(1.2); font-weight: 100 !important;">{{ Nav.icon }}</mat-icon>
-              <p style="color: antiquewhite;">{{ Nav.name }}</p>
+              <mat-icon class="material-symbols-outlined mat-icon" style="-webkit-text-fill-color:#757575; transform: scale(1.2); font-weight: 120 !important;">{{ Nav.icon }}</mat-icon>
+              <p style="color: #757575;">{{ Nav.name }}</p>
             </a>
           </ng-template>
         </ng-container>
@@ -65,9 +64,9 @@
 
         <div class="configuracion">
 
-          <a mat-list-item *ngFor="let Nav of fillerNav1;" [routerLink]="Nav.route" class="opciones material-symbols-outlined" style="text-decoration: none; -webkit-text-fill-color:antiquewhite; transform: scale(1); font-weight: 100 !important;">
-            <mat-icon>{{Nav.icon}}</mat-icon>
-            <p>{{Nav.name}}</p>
+          <a mat-list-item *ngFor="let Nav of fillerNav1;" [routerLink]="Nav.route" class="opciones" style="text-decoration: none;">
+            <mat-icon class="material-symbols-outlined mat-icon" style="text-decoration: none; -webkit-text-fill-color:#757575; transform: scale(1.2); font-weight: 120 !important;">{{Nav.icon}}</mat-icon>
+            <p style="color: #757575;">{{Nav.name}}</p>
           </a>
 
         </div>

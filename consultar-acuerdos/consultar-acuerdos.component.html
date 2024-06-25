@@ -18,7 +18,7 @@
         <div id="buscar">
 
   
-            <input type="text" name="filtrar" placeholder="buscar" [(ngModel)]="filtroAcuerdos">
+            <input type="text" name="filtrar" placeholder="buscar" id="buscar2" [(ngModel)]="filtroAcuerdos">
             <input type="date" name="filtrarFecha" [(ngModel)]="filtroFecha" id="buscar1" (ngModelChange)="onFechaSeleccionada()">
             <label for="modal" class="boton">Agregar</label>
 
@@ -111,7 +111,7 @@
                     </div>
 
                     <div class="form-group">
-                        <textarea id="detalles" name="detalles" rows="4" placeholder="Detalles del acuerdo" ngModel required></textarea>
+                        <textarea id="detalles" name="detalles" placeholder="Detalles del acuerdo" ngModel required></textarea>
                     </div>
 
                     <div class="botones-container">

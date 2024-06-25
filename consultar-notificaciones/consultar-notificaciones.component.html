@@ -11,11 +11,11 @@
     </div>
 
     <hr>
- 
+  
 
     <div class="contenedor1" *ngIf="mostrarGrid">
         <div id="buscar">
-
+ 
             <input type="text" name="filtrar" placeholder="buscar" [(ngModel)]="filtroNotificaciones">
 
             
@@ -117,8 +117,8 @@
                         <!-- ... Otros campos del formulario ... -->
 
                         <div class="form-group">
-                            <select id="tipo" name="tipo" required ngModel>
-                                <option value="general" disabled>-- tipo de notificación --</option>
+                            <select id="tipo" name="tipo" required ngModel formControlName="tipo" [selectedIndex]="0">
+                                <option value="0" disabled selected>-- tipo de notificación --</option>
                                 <option value="general">General</option>
                                 <option value="individual">Individual</option>
                             </select>
@@ -128,8 +128,8 @@
 
 
                         <div class="form-group">
-                            <select id="destinatario" name="destinatario" required ngModel>
-                                <option [ngValue]="undefined" [disabled]="true">-- Selecciona un destinatario --
+                            <select id="destinatario" name="destinatario" required ngModel formControlName="destinatario" [selectedIndex]="0">
+                                <option value="0" disabled selected>-- Selecciona un destinatario --
                                 </option>
                                 <option value={{usuario.id_persona}} *ngFor="let usuario of personas">
                                     {{usuario.id_persona}}- {{usuario.nombre}} {{usuario.apellido_pat}}

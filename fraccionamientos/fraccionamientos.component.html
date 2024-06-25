@@ -68,7 +68,7 @@
       </label>
 
 
-
+ 
     </div>
 
 
@@ -83,7 +83,7 @@
           <option value="0" disabled selected>--Selecciona un modelo de controlador--</option>
           <option value="">hikvision ds-k2602</option>
         </select>
-
+ 
         <a [href]="'mailto:destinatario@example.com?subject='" style="font-size: smaller;" id="enviar_correo">
           El modelo de mi controlador no se encuentra en la lista
         </a>
@@ -98,11 +98,25 @@
         </div>
 
 
-
-        <input type="text" formControlName="ip" name="ip" [(ngModel)]="controlador.ip"
+        <!--
+                <input type="text" formControlName="ip" name="ip" [(ngModel)]="controlador.ip"
           placeholder="ip pública del controlador">
+        -->
 
-        <input type="text" id="port" formControlName="port" name="port" [(ngModel)]="controlador.port"
+        <div class="ip">
+          <input type="number" name="oct1" class="octeto" placeholder="127" min="1" max="999" oninput="validity.valid||(value='');">
+          <label class="punto">.</label>
+          <input type="number" name="oct2" class="octeto" placeholder="0" min="0" max="999" oninput="validity.valid||(value='');">
+          <label class="punto">.</label>
+          <input type="number" name="oct3" class="octeto" placeholder="0" min="0" max="999" oninput="validity.valid||(value='');">
+          <label class="punto">.</label>
+          <input type="number" name="oct4" class="octeto" placeholder="1" min="0" max="999" oninput="validity.valid||(value='');">
+        </div>
+
+
+       
+
+        <input type="number" id="port" formControlName="port" name="port" [(ngModel)]="controlador.port" min="1" max="65535" oninput="validity.valid||(value='');"
           placeholder="puerto">
 
 
@@ -112,6 +126,8 @@
 
         <input type="text" id="password" formControlName="password" name="password" [(ngModel)]="controlador.password"
           placeholder="contraseña">
+
+       
 
         <div class="botones-container">
           <button class="boton" (click)="Agregar_fraccionamiento(form.value)" onclick="myFunction()">Agregar</button>

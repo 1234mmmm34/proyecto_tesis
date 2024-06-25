@@ -133,6 +133,7 @@ input, select{
   margin-left: 15%;
 }
 
+
 #controlador{
   margin-top: 100px;
   position:absolute; top:40px; left:550px;
@@ -200,6 +201,12 @@ input, select{
 
 }
 
+.octeto{
+  width: 19%;
+  margin-left: 2px;
+  text-align: center;
+}
+
 #descripcion {
   text-align: justify !important;
   margin-left: 100px;
@@ -207,7 +214,14 @@ input, select{
   color: rgb(97, 94, 94) !important;
 }
 
+.ip{
+  display: flex;
+  margin-left: 15%;
+}
 
+.punto{
+  padding-top: 30px;
+}
 
 .top{
   

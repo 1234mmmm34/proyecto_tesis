@@ -42,7 +42,10 @@ this.UserGroup = this.fb.group({
      user: ['', Validators.required],
      password: ['', Validators.required],
      port: ['', Validators.required],
-     ip: ['', Validators.required]
+     oct1: ['', Validators.required],
+     oct2: ['', Validators.required],
+     oct3: ['', Validators.required],
+     oct4: ['', Validators.required]
 
    })
 }
