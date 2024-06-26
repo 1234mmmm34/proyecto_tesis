@@ -5,6 +5,7 @@ tipo: string;
 id_destinatario: number;
 asunto: string;
 mensaje: string;
+visualizacion: number;
 
 constructor(
   id_notificacion: number,
@@ -12,7 +13,8 @@ constructor(
   tipo: string,
   id_destinatario: number,
   asunto: string,
-  mensaje: string
+  mensaje: string,
+  visualizacion: number
 ) {
   this.id_notificacion = id_notificacion;
   this.id_fraccionamiento = id_fraccionamiento;
@@ -20,5 +22,6 @@ constructor(
   this.id_destinatario = id_destinatario;
   this.asunto = asunto;
   this.mensaje = mensaje;
+  this.visualizacion = visualizacion
 }
 }

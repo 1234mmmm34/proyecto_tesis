@@ -35,6 +35,19 @@ input, select{
 }
 
 
+.nuevo{
+  background-color: rgb(62, 178, 62);
+  border-radius: 48%;
+  width: 100%;
+  padding: 5px 10px 5px 10px;
+  font-size: smaller;
+  color: #f5f1f1;
+
+}
+
+#nuevonot{
+  width: 100px;
+}
 
 .form-group > input{
   border:none;

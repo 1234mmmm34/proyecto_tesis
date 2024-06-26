@@ -43,11 +43,12 @@
                 <thead>
                     <tr>
 
-                        <th scope="col" class="asunto" width="300px" style=" font: 1em sans-serif;">Asunto</th>
+                        <th scope="col" class="asunto" width="300px">Asunto</th>
+                        <th scope="col"></th>
                         <th scope="col">Detalles</th>
                         <th scope="col">Destinatario</th>
                         <th scope="col" style="text-align:center;width:200px;">
-                            Acciones
+                            Acciones y ver más
                         </th>
                     </tr>
                 </thead>
@@ -55,6 +56,9 @@
                     <tr tr mat-row matRowDef="columns: displayedcolumns;"
                         *ngFor="let notificacion of notificaciones1 | filtroNotificaciones: 'asunto': filtroNotificaciones">
                         <td class="asunto" style=" font: 1em sans-serif;">{{ notificacion.asunto }}</td>
+                        <td id="nuevonot">
+                            <span class="nuevo" *ngIf="notificacion.visualizacion === 1">nuevo</span>
+                        </td>
                         <td>{{ notificacion.mensaje }}</td>
                         <td>{{ notificacion.id_destinatario === 0 ? 'Todos' : notificacion.id_destinatario }}</td>
                         <td id="td-view">

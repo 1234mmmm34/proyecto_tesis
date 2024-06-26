@@ -7,6 +7,7 @@ import { usuario, usuarios } from "../modelos/usuarios";
 import { NumberFormatStyle } from '@angular/common';
 import { DataService } from '../data.service';
 import Swal from 'sweetalert2';
+import { async } from 'rxjs';
 
 @Component({
   selector: 'app-consultar-notificaciones',
@@ -75,10 +76,28 @@ export class ConsultarNotificacionesComponent {
       this.indice = this.indice + this.verdaderoRango;
       this.notificaciones1 = this.notificaciones.slice(this.indice, this.indice + this.verdaderoRango);
       this.cont++;
-     // this.consultarNotificacion
-    }
+
+      //console.log(this.notificaciones1)
+     
+      this.actualizar_estado();
 
   }
+}
+
+
+  actualizar_estado(){
+
+    setTimeout(() => 
+        
+      this.notificaciones1.forEach(notif => {
+        notif.visualizacion = 0; // Cambiar la propiedad "estado" a 0 para cada objeto
+      })
+      
+      , 4000);
+
+   }
+      
+  
 
   onChange(event: any){
 
@@ -104,7 +123,7 @@ export class ConsultarNotificacionesComponent {
       },
       willClose: () => {
         clearInterval(10);
-        this.mostrarGrid = true;
+        this.mostrarGrid = true; 
 
       }
     });
@@ -116,6 +135,8 @@ export class ConsultarNotificacionesComponent {
         this.indice = 0;
         this.verdaderoRango = 6;
         this.notificaciones1 = this.notificaciones.slice(this.indice, this.indice + this.verdaderoRango);
+
+        this.actualizar_estado();
 
       });
   }
