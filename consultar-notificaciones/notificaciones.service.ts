@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Notificaciones } from '../modelos/notificaciones';
 import { Observable } from 'rxjs';
+import { Personas } from '../modelos/personas';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,7 @@ export class NotificacionesService {
     const url = `${this.apiUrl}consultar_Notificacion?id_fraccionamiento=${idFraccionamiento}`;
     return this.http.get<Notificaciones[]>(url);
   }
+
 
 
 }

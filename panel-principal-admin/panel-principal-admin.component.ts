@@ -4,6 +4,9 @@ import { MediaMatcher } from '@angular/cdk/layout'
 import { DataService } from '../data.service'
 import { ImagenService } from './imagen.service';
 import { Router } from "@angular/router";
+import {MatBadgeModule} from '@angular/material/badge';
+import { NotificacionesService } from '../consultar-notificaciones/notificaciones.service';
+import { Notificaciones } from '../modelos/notificaciones';
 
 
 
@@ -14,13 +17,22 @@ import { Router } from "@angular/router";
 })
 export class PanelPrincipalAdminComponent {
   imagen: any;
+  indice: number = 0;
+  verdaderoRango: number = 6;
+  cont: number = 1;
+  registrosTotales: number = 0;
+  notificaciones1: Notificaciones[] = [];
+  notificaciones: Notificaciones[] = [];
+  id_destinatario: number = 2;
 
 
   mobileQuery: MediaQueryList;
 
+
   esPanelAdmin(): boolean {
     return this.router.url === 'Home';
   }
+
 
 
 
@@ -56,7 +68,7 @@ export class PanelPrincipalAdminComponent {
 
 
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private data: DataService, private imagenService: ImagenService, private router: Router) {
+  constructor(private NotificacionesService: NotificacionesService, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private data: DataService, private imagenService: ImagenService, private router: Router) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -76,7 +88,14 @@ export class PanelPrincipalAdminComponent {
     this.usuario = this.data.obtener_usuario(8);
     this.Cargar_Imagen(this.data.obtener_usuario(1));
     this.esPanelAdmin();
+    this.consultarNotificacion(this.data.obtener_usuario(1), this.indice, this.verdaderoRango, this.id_destinatario);
 
+    $(document).ready(function() {
+      $(".notification-drop .item").on('click',function() {
+        $(this).find('ul').toggle();
+      });
+    });
+    
 
   }
 
@@ -115,5 +134,25 @@ export class PanelPrincipalAdminComponent {
       this.submenuAbierto = index; // Abre el nuevo submenu
     }
   }
+
+
+
+  
+  consultarNotificacion(idFraccionamiento: any, indice: number, verdaderoRango: number, id_destinatario: number) {
+
+
+    this.NotificacionesService.consultarNotificacion(idFraccionamiento, 0, 100, id_destinatario).subscribe((notificaciones: Notificaciones[]) => {
+
+      
+      this.notificaciones = notificaciones;
+      this.indice = 0;
+      this.verdaderoRango = 6;
+      this.notificaciones1 = this.notificaciones.slice(this.indice, this.indice + this.verdaderoRango);
+      console.log(this.notificaciones1)
+
+    });
+  }
+
+
 
 }

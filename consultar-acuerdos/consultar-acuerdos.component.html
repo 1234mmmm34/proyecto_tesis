@@ -1,6 +1,8 @@
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@200" />
+
 
 <body>
 
@@ -11,7 +13,7 @@
             sentido de pertenencia. </p>
 
     </div>
-    <hr>
+    <hr> 
 
 
     <div class="contenedor1" *ngIf="mostrarGrid">
@@ -20,7 +22,11 @@
   
             <input type="text" name="filtrar" placeholder="buscar" id="buscar2" [(ngModel)]="filtroAcuerdos">
             <input type="date" name="filtrarFecha" [(ngModel)]="filtroFecha" id="buscar1" (ngModelChange)="onFechaSeleccionada()">
-            <label for="modal" class="boton">Agregar</label>
+            <div style="display: flex; align-items: center; margin-left: 65%;">
+                <mat-icon style="font-size:xx-large; padding-top: 13px; width: 24%;height: 100%;">settings</mat-icon>
+                <label for="modal" class="boton" style="margin-right: 10px;">Agregar</label>
+            </div>
+
 
         </div>
 
@@ -88,7 +94,7 @@
 
         <div class="modal">
             <div class="modal-header">
-                <h3>Agregar notificación</h3>
+                <h3>Agregar acuerdo</h3>
 
                 <label for="modal">
                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC"
@@ -111,7 +117,7 @@
                     </div>
 
                     <div class="form-group">
-                        <textarea id="detalles" name="detalles" placeholder="Detalles del acuerdo" ngModel required></textarea>
+                        <textarea id="detalles" name="detalles" placeholder="Detalles del acuerdo" ngModel required  maxlength="200"></textarea>
                     </div>
 
                     <div class="botones-container">

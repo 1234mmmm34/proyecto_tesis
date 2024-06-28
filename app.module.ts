@@ -69,6 +69,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { heroUsers } from '@ng-icons/heroicons/outline';
 import { NgIconsModule } from '@ng-icons/core';
 import { featherAirplay } from '@ng-icons/feather-icons';
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   declarations: [
@@ -140,7 +141,8 @@ import { featherAirplay } from '@ng-icons/feather-icons';
     CommonModule,
     RouterOutlet,
     CanvasJSAngularChartsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatBadgeModule
 
   ],
   providers: [],

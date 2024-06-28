@@ -125,7 +125,7 @@ constructor(private router:Router, private http: HttpClient, private dataService
   }
   //Busca personas por fraccionamiento
   fetchDataPersonasFraccionamiento(id_fraccionamiento: any, id_administrador: any){
-    this.dataService.fetchDataPersonasFraccionamiento(id_fraccionamiento,id_administrador).subscribe((usuarios: usuarios[]) => {
+    this.dataService.fetchDataUsers(id_fraccionamiento).subscribe((usuarios: usuarios[]) => {
       console.log("usuarios:", usuarios);
       this.usuarios = usuarios;
     });

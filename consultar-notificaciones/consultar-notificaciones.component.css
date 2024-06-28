@@ -8,6 +8,11 @@ body {
 
 }
 
+mat-icon:hover {
+  color: #6c5bb8; /* Cambia 'blue' al color que desees */
+  cursor: pointer; /* Opcional: Cambia el cursor al cursor de puntero */
+}
+
 #buscar1{
   display: inline-block;
   width: 500px;
@@ -64,6 +69,10 @@ input, select{
 
 }
 
+.form-group > button{
+  margin-left: 40%;
+}
+
 
 /* Estilo para el icono de desplegar */
 select::after {
@@ -111,8 +120,7 @@ input {
   display: flexbox;
 }
 
-
-
+ 
 
 .boton {
   background-color: #242434;
@@ -127,14 +135,20 @@ input {
   text-transform: uppercase;
   border-color: #242434;
   border-radius: 5px;
-
-  margin-right: 20%;
-  margin-left: 69%;
   padding-top: 10px;
+  border: none;
+
+
 
 
 
 }
+
+/*
+  margin-right: 20%;
+  margin-left: 69%;
+  padding-top: 10px;
+  */
 
 .boton:hover {
   color: #ffffff;
@@ -169,6 +183,10 @@ input {
 
   border-collapse: collapse;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#boton-buscar{
+  margin-left: 67%;
 }
 
 

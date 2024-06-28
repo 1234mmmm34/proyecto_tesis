@@ -74,12 +74,18 @@ textarea{
   border-color: #242434;
   border-radius: 5px;
 
-  margin-right: 20%;
-  margin-left: 69%;
+  padding-left: 10px;
+  padding-right: 10px;
+
   padding-top: 10px;
 
 
 
+}
+
+mat-icon:hover {
+  color: #6c5bb8; /* Cambia 'blue' al color que desees */
+  cursor: pointer; /* Opcional: Cambia el cursor al cursor de puntero */
 }
 
 .boton:hover {

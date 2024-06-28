@@ -6,19 +6,20 @@
 
     <div>
         <h2 class="titulo">Notificaciones</h2>
-        <p id="descripcion">las notificaciones son una herramienta clave para mantener a una comunidad informada, comprometida y
+        <p id="descripcion">las notificaciones son una herramienta clave para mantener a una comunidad informada,
+            comprometida y
             cohesionada. </p>
     </div>
 
     <hr>
-  
+
 
     <div class="contenedor1" *ngIf="mostrarGrid">
         <div id="buscar">
- 
+
             <input type="text" name="filtrar" placeholder="buscar" [(ngModel)]="filtroNotificaciones">
 
-            
+
             <div id="buscar1">
                 <span>Filtrar por: </span>
                 <select id="tipoNotificacion" (change)="onChange($event)">
@@ -31,12 +32,16 @@
 
             </div>
 
-            <label for="modal" class="boton">Agregar</label>
+            <div style="display: flex; align-items: center; margin-left: 65%;">
+                <mat-icon style="font-size:xx-large; padding-top: 13px; width: 24%;height: 100%;">settings</mat-icon>
+                <label for="modal" class="boton" style="margin-right: 10px;">Agregar</label>
+            </div>
+
 
 
 
         </div>
- 
+
         <div class="contenedor2" *ngIf="this.notificaciones1.length>0; else noencontrado">
 
             <table class="table" width="100%">
@@ -73,11 +78,12 @@
             </table>
 
             <div class="pages">
-                <mat-paginator [length]="notificaciones.length" [pageSize]="verdaderoRango" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page" (page)="pageChanged($event)">
+                <mat-paginator [length]="notificaciones.length" [pageSize]="verdaderoRango"
+                    [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page" (page)="pageChanged($event)">
                 </mat-paginator>
             </div>
 
-              
+
         </div>
 
         <ng-template #noencontrado>
@@ -85,9 +91,9 @@
                 <img class="noencontrado" src="./no-en2.jpg">
                 <p>holaaa</p>
             </div>
-            
-        </ng-template>  
- 
+
+        </ng-template>
+
 
 
 
@@ -100,67 +106,68 @@
 
 
 
-            <div class="modal">
-                <div class="modal-header">
-                    <h3>Agregar notificación</h3>
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Agregar notificación</h3>
 
-                    <label for="modal">
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC"
-                            width="16" height="16" alt="">
-                    </label>
-
-
-
-                </div>
-
-
-                <div class="form">
-
-                    <!-- Formulario para agregar un nuevo acuerdo -->
-                    <form id="formCrear" class="Formulario" #form="ngForm" (ngSubmit)="agregarNotificacion(form.value)">
-                        <!-- ... Otros campos del formulario ... -->
-
-                        <div class="form-group">
-                            <select id="tipo" name="tipo" required ngModel formControlName="tipo" [selectedIndex]="0">
-                                <option value="0" disabled selected>-- tipo de notificación --</option>
-                                <option value="general">General</option>
-                                <option value="individual">Individual</option>
-                            </select>
-                        </div>
-
-
-
-
-                        <div class="form-group">
-                            <select id="destinatario" name="destinatario" required ngModel formControlName="destinatario" [selectedIndex]="0">
-                                <option value="0" disabled selected>-- Selecciona un destinatario --
-                                </option>
-                                <option value={{usuario.id_persona}} *ngFor="let usuario of personas">
-                                    {{usuario.id_persona}}- {{usuario.nombre}} {{usuario.apellido_pat}}
-                                    {{usuario.apellido_mat}}
-                                </option>
-                            </select>
-                        </div>
-
-
-                        <div class="form-group">
-                            <input type="text" id="asunto" name="asunto" placeholder="asunto" required ngModel>
-                        </div>
-
-
-                        <div class="form-group">
-                            <textarea id="mensaje" name="mensaje" placeholder="mensaje" required ngModel></textarea>
-                        </div>
-
-                        <div class="botones-container">
-                            <button class="boton-verde" type="submit">Agregar</button>
-                        </div>
-                    </form>
-                </div>
+                <label for="modal">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAdVBMVEUAAABNTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU1NTU0N3NIOAAAAJnRSTlMAAQIDBAUGBwgRFRYZGiEjQ3l7hYaqtLm8vsDFx87a4uvv8fP1+bbY9ZEAAAB8SURBVBhXXY5LFoJAAMOCIP4VBRXEv5j7H9HFDOizu2TRFljedgCQHeocWHVaAWStXnKyl2oVWI+kd1XLvFV1D7Ng3qrWKYMZ+MdEhk3gbhw59KvlH0eTnf2mgiRwvQ7NW6aqNmncukKhnvo/zzlQ2PR/HgsAJkncH6XwAcr0FUY5BVeFAAAAAElFTkSuQmCC"
+                        width="16" height="16" alt="">
+                </label>
 
 
 
             </div>
+
+
+            <div class="form">
+
+                <!-- Formulario para agregar un nuevo acuerdo -->
+                <form id="formCrear" class="Formulario" #form="ngForm" (ngSubmit)="agregarNotificacion(form.value)">
+                    <!-- ... Otros campos del formulario ... -->
+
+                    <div class="form-group">
+                        <select id="tipo" name="tipo" required ngModel formControlName="tipo" [selectedIndex]="0"
+                            (change)="consultarUsuarios()">
+                            <option value="0" disabled selected>-- tipo de notificación --</option>
+                            <option value="general">General</option>
+                            <option value="individual">Individual</option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group" id="usuarios" *ngIf="mostrarDestinatario">
+                        <select id="destinatario" name="destinatario" required ngModel formControlName="destinatario">
+                            <option [value]="0" [attr.disabled]="true" [attr.selected]="true" disabled selected >-- Selecciona un destinatario --</option>
+                            <option value={{usuario.id_persona}} *ngFor="let usuario of usuarios">
+                                {{usuario.nombre}} {{usuario.apellido_pat}}
+                                {{usuario.apellido_mat}}
+                            </option>
+                        </select>
+                    </div>
+
+
+
+
+                    <div class="form-group">
+                        <input type="text" id="asunto" name="asunto" placeholder="asunto" required ngModel>
+                    </div>
+
+
+                    <div class="form-group">
+                        <textarea id="mensaje" name="mensaje" placeholder="mensaje" required ngModel
+                            maxlength="200"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <button class="boton" type="submit">Agregar</button>
+                    </div>
+                </form>
+            </div>
+
+
+
+        </div>
 
 
 

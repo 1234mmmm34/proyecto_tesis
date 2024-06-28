@@ -82,6 +82,7 @@ export class DataService {
     return this.http.get<controladores[]>("https://localhost:44397/Hikvision/Consultar_Hikvision?id_fraccionamiento="+id_administrador);
   }
 
+  //consultar todas las personas que pertenecen a un fraccionamiento
   fetchDataUsers(id_administrador: any): Observable<usuarios[]> {
     return this.http.get<usuarios[]>(this.baseUrl1+id_administrador);
   }
@@ -100,11 +101,6 @@ export class DataService {
     return this.http.get<lotes[]>(this.baseUrl2+id_administrador);
   } 
 
-  fetchDataPersonasFraccionamiento(id_fraccionamiento: any, id_administrador: any): Observable<usuarios[]> {
-    return this.http.get<usuarios[]>(
-      'https://localhost:44397/api/Personas/Consultar_Personas_Fraccionamiento?id_fraccionamiento='+id_fraccionamiento+
-      '&id_administrador='+id_administrador);
-  }
 
   fetchDataPersonasLote(id_lote: any): Observable<inquilinos[]> {
     return this.http.get<inquilinos[]>('https://localhost:44397/api/Usuario_lote/Consultar_inquilino?id_lote='+id_lote);

@@ -15,8 +15,7 @@ import { async } from 'rxjs';
   styleUrls: ['./consultar-notificaciones.component.css']
 })
 export class ConsultarNotificacionesComponent {
-  constructor(private NotificacionesService: NotificacionesService,
-    private notificacionesService: NotificacionesService, private dataService: DataService) { }
+  constructor(private NotificacionesService: NotificacionesService, private dataService: DataService) { }
   personas: Personas[] = [];
 
   id_fraccionamineto: number = this.dataService.obtener_usuario(1);
@@ -24,6 +23,7 @@ export class ConsultarNotificacionesComponent {
   idNotificacion: number | undefined;
   notificaciones: Notificaciones[] = [];
   tipoSeleccionado: string = 'General';
+  tipo: string = '';
   idFraccionamiento: number = this.dataService.obtener_usuario(1);
   idUsuario: number = 0;
   filtroNotificaciones: "" | undefined;
@@ -35,19 +35,14 @@ export class ConsultarNotificacionesComponent {
   notificaciones1: Notificaciones[] = [];
   id_destinatario: number = 2;
   mostrarGrid: boolean = false;
+  mostrarDestinatario: boolean = false; 
+
 
 
 
   ngOnInit(): void {
 
     this.consultarNotificacion(this.dataService.obtener_usuario(1), this.indice, this.verdaderoRango, this.id_destinatario);
-
-    //this.consultarNotificacion(this.dataService.obtener_usuario(1), 0, 6, this.id_destinatario);
-  // this.registrosTotales = this.dataService.numeroRegistrosTabla(this.dataService.obtener_usuario(1), "notificaciones")
-
-
-
-
   }
 
   pageChanged(event: any) {
@@ -57,7 +52,7 @@ export class ConsultarNotificacionesComponent {
       this.paginador_adelante();
     } else if (event.previousPageIndex > event.pageIndex) {
       // Se retrocedió a la página anterior
-      this.paginador_atras(); 
+      this.paginador_atras();
     }
   }
 
@@ -69,6 +64,10 @@ export class ConsultarNotificacionesComponent {
       this.indice = this.indice - this.verdaderoRango;
       this.cont--;
     }
+
+    this.notificaciones1.forEach(notif => {
+      notif.visualizacion = 0; // Cambiar la propiedad "estado" a 0 para cada objeto
+    })
   }
 
   paginador_adelante() {
@@ -77,43 +76,27 @@ export class ConsultarNotificacionesComponent {
       this.notificaciones1 = this.notificaciones.slice(this.indice, this.indice + this.verdaderoRango);
       this.cont++;
 
-      //console.log(this.notificaciones1)
-     
-      this.actualizar_estado();
-
+    }
   }
-}
 
 
-  actualizar_estado(){
 
-    setTimeout(() => 
-        
-      this.notificaciones1.forEach(notif => {
-        notif.visualizacion = 0; // Cambiar la propiedad "estado" a 0 para cada objeto
-      })
-      
-      , 4000);
 
-   }
-      
-  
+  onChange(event: any) {
 
-  onChange(event: any){
+    const selectedValue = event.target.value;
 
-      const selectedValue = event.target.value;
+    this.id_destinatario = selectedValue;
+    // console.log(this.id_destinatario);
 
-      this.id_destinatario=selectedValue;
-     // console.log(this.id_destinatario);
-
-     this.consultarNotificacion(this.dataService.obtener_usuario(1), 0, 100, this.id_destinatario);
+    this.consultarNotificacion(this.dataService.obtener_usuario(1), 0, 100, this.id_destinatario);
   }
 
 
   consultarNotificacion(idFraccionamiento: any, indice: number, verdaderoRango: number, id_destinatario: number) {
 
     Swal.fire({
-   
+
       title: 'Cargando datos',
       html: 'por favor espere',
       didOpen: () => {
@@ -123,22 +106,20 @@ export class ConsultarNotificacionesComponent {
       },
       willClose: () => {
         clearInterval(10);
-        this.mostrarGrid = true; 
+        this.mostrarGrid = true;
 
       }
     });
 
     this.NotificacionesService.consultarNotificacion(idFraccionamiento, 0, 100, id_destinatario).subscribe((notificaciones: Notificaciones[]) => {
-      //  console.log("notificaciones: ", valor);
+
       Swal.close();
-        this.notificaciones = notificaciones;
-        this.indice = 0;
-        this.verdaderoRango = 6;
-        this.notificaciones1 = this.notificaciones.slice(this.indice, this.indice + this.verdaderoRango);
+      this.notificaciones = notificaciones;
+      this.indice = 0;
+      this.verdaderoRango = 6;
+      this.notificaciones1 = this.notificaciones.slice(this.indice, this.indice + this.verdaderoRango);
 
-        this.actualizar_estado();
-
-      });
+    });
   }
 
 
@@ -149,25 +130,26 @@ export class ConsultarNotificacionesComponent {
     const idFraccionamiento = this.id_fraccionamineto;
     //console.log(idFraccionamiento);
     const tipo = formulario.tipo;
-    console.log("tipo"+  tipo);
-    let destinatarioId=0;
-    if(tipo=='general'){
-    destinatarioId=0;
-    }else if(tipo=='individual'){
+    console.log("tipo" + tipo);
+    let destinatarioId = 0;
+
+    if (tipo == 'individual') { 
       destinatarioId = parseInt(formulario.destinatario.split(' - ')[0]);
-    }else{
-      return;
     }
+
+
     //console.log(destinatarioId);
     const asunto = formulario.asunto;
     //console.log(asunto);
     const mensaje = formulario.mensaje;
     //console.log(mensaje);
 
+    console.log("holaaaaaaa")
+
     this.NotificacionesService.agregarNotificacion(idFraccionamiento, tipo, destinatarioId, asunto, mensaje)
       .subscribe(
         (respuesta: string) => {
-          this.respuestaNotificacion =respuesta;
+          this.respuestaNotificacion = respuesta;
           console.log('Respuesta:', respuesta);
           Swal.fire({
             title: 'Notificacion agregada correctamente',
@@ -188,33 +170,61 @@ export class ConsultarNotificacionesComponent {
 
         }
       );
-   }
-
- 
+  }
 
 
 
 
 
-/*
+  consultarUsuarios(){
 
-  actualizarNotificaciones(): void {
-    this.notificaciones = []; // Vaciar el arreglo antes de cargar nuevas notificaciones
+    
 
-    if (this.tipoSeleccionado === 'General') {
-      this.idUsuario = 0;
-    } else {
-      // Asignar el ID de usuario correspondiente a la sesión (puedes ajustarlo según tu lógica de inicio de sesión)
-      // this.idUsuario = ...;
-      this.idUsuario = 1;
+    Swal.fire({
+
+      title: 'Cargando datos',
+      html: 'por favor espere',
+      didOpen: () => {
+
+        Swal.showLoading();
+
+      }
+    });
+
+
+    this.dataService.fetchDataUsers(this.dataService.obtener_usuario(1)).subscribe((usuarios: usuarios[]) => {
+      Swal.close();
+      clearInterval(10);
+      
+      this.mostrarDestinatario = true;
+      this.usuarios = usuarios;
+
+    });
+
+  }
+
+
+
+
+  /*
+  
+    actualizarNotificaciones(): void {
+      this.notificaciones = []; // Vaciar el arreglo antes de cargar nuevas notificaciones
+  
+      if (this.tipoSeleccionado === 'General') {
+        this.idUsuario = 0;
+      } else {
+        // Asignar el ID de usuario correspondiente a la sesión (puedes ajustarlo según tu lógica de inicio de sesión)
+        // this.idUsuario = ...;
+        this.idUsuario = 1;
+      }
     }
-  }
-
-  filtrarPorTipo(event: Event): void {
-    const target = event.target as HTMLSelectElement;
-    this.tipoSeleccionado = target.value;
-    this.actualizarNotificaciones();
-  }
-  */
+  
+    filtrarPorTipo(event: Event): void {
+      const target = event.target as HTMLSelectElement;
+      this.tipoSeleccionado = target.value;
+      this.actualizarNotificaciones();
+    }
+    */
 
 }

@@ -45,7 +45,7 @@ export class PropiedadesComponent {
   onSelect(id_fraccionamiento: any) {
     console.log(id_fraccionamiento);
     // this.id_fraccionamiento = id_fraccionamiento;
-    this.fetchDataPersonasFraccionamiento(id_fraccionamiento, this.dataService.obtener_usuario(1))
+    this.fetchDataPersonasFraccionamiento(this.dataService.obtener_usuario(1))
     // this.ubigeo.getProvincias(code); // con esto ya hemos obtenido las provincias del departamento seleccionado, ahora solo falta ponerlo en la plantilla html.
   }
 
@@ -67,7 +67,7 @@ export class PropiedadesComponent {
   }
 
   AbrirrMenu(lote: any) {
-    this.fetchDataPersonasFraccionamiento(lote.id_fraccionamiento, this.dataService.obtener_usuario(1))
+    this.fetchDataPersonasFraccionamiento(this.dataService.obtener_usuario(1))
     this.fetchDataPersonasLote(lote.id_lote);
     console.log("lote: ", lote.id_lote)
     this.AbrirMenu = true;
@@ -77,7 +77,7 @@ export class PropiedadesComponent {
     //  this.fetchDataUsers(this.dataService.obtener_usuario(1));
     this.fetchData(this.dataService.obtener_usuario(1));
     this.fetchDataPropiedades(this.dataService.obtener_usuario(1));
-    this.fetchDataPersonasFraccionamiento(0, 0)
+    this.fetchDataPersonasFraccionamiento(this.dataService.obtener_usuario(1))
     this.fetchDataLastUser1(),
       this.dataService.fetchDataUsers(this.dataService.obtener_usuario(1)).subscribe((usuarios: usuarios[]) => {
         this.usuarios = usuarios;
@@ -511,8 +511,8 @@ export class PropiedadesComponent {
     });
   }
   //Busca personas por fraccionamiento
-  fetchDataPersonasFraccionamiento(id_fraccionamiento: any, id_administrador: any) {
-    this.dataService.fetchDataPersonasFraccionamiento(id_fraccionamiento, id_administrador).subscribe((usuarios: usuarios[]) => {
+  fetchDataPersonasFraccionamiento(id_fraccionamiento: any) {
+    this.dataService.fetchDataUsers(id_fraccionamiento).subscribe((usuarios: usuarios[]) => {
       console.log("usuarios:", usuarios);
       this.usuarios = usuarios;
     });
